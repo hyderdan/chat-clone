@@ -1,0 +1,12 @@
+.app-components{
+    display: flex;
+    flex-direction: row;
+}
+.chat-com{
+    width: 40%;
+}
+@media(width<730px){
+    .chat-com{
+        width: 100%;
+    }
+}
