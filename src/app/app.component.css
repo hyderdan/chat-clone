@@ -3,9 +3,16 @@
     flex-direction: row;
 }
 .chat-com{
-    width: 40%;
+    width: 50%;
 }
-@media(width<730px){
+.chat-users{
+    width: 43%;
+}
+
+@media(width<800px){
+    .chat-users{
+        display: none;
+    }
     .chat-com{
         width: 100%;
     }
