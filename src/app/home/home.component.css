@@ -13,13 +13,13 @@
     flex-direction: column;
     justify-content: start;
     place-items: center;
-    background-color: rgb(3, 3, 21);
+    background-color: rgb(3, 3, 17);
     color: white;
 }
 .nav-sidebar-l ul{
     /* background-color: red; */
     margin-top: 20px;
-    padding: 10px 20px 10px 20px;
+    padding: 40px 20px 40px 20px;
 }
 .nav-sidebar-l li{
     padding-top: 20px;
@@ -36,7 +36,7 @@
     flex-direction: column;
     justify-content: start;
     place-items: center;
-    background-color: rgb(3, 3, 21);
+    background-color: rgb(3, 3, 17);
     color: white;
 }
 .nav-sidebar-sm ul{
@@ -57,6 +57,3 @@
 /* nav-bar sm ends*/
 
 
-
-.users{
-}
