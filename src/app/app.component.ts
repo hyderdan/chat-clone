@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ChatComponent } from './chat/chat.component';
 import { UsersComponent } from './chat/users/users.component';
+import { DataSharingService } from './services/data-sharing.service';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,16 @@ import { UsersComponent } from './chat/users/users.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
-  title = 'chat-clone';
+export class AppComponent implements OnInit {
+  title: any;
+  constructor(private DS: DataSharingService) { };
+  ngOnInit(): void {
+    this.getValue();
+  }
+  getValue() {
+    this.DS.currenUserSm.subscribe(userSm => {
+      this.title = userSm;
+      console.log(this.title);
+    })
+  }
 }
