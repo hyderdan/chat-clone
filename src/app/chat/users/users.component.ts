@@ -5,12 +5,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPaperPlane, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [ChatComponent, FontAwesomeModule, CommonModule],
+  imports: [ChatComponent, FontAwesomeModule, CommonModule, FormsModule],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })
@@ -20,6 +21,7 @@ export class UsersComponent implements OnInit {
   public Gooback: boolean = true;
   public faPlane = faPaperPlane;
   faarrowleft = faArrowLeft;
+  chatSend = '';
 
   ngOnInit(): void {
     this.getName();
