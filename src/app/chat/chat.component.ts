@@ -30,15 +30,20 @@ export class ChatComponent implements OnInit {
   handleusername(params: string) {
     // this.username = params;
     this.dataSharing.changeUsername(params);
+    const back: boolean = false;
+    this.dataSharing.showProfile(back);
+
+
 
   }
   handlechat(params: string, params2:string){
     this.dataSharing.changeUsername(params2);  
     const toggleChat:boolean = true;
-    const back: boolean = false;
     this.route.navigate([params]);
     this.dataSharing.handleUsersm(toggleChat);
+    const back: boolean = false;
     this.dataSharing.showProfile(back);
+
   }
 
 }
