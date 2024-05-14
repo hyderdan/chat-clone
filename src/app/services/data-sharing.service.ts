@@ -5,12 +5,36 @@ import { BehaviorSubject } from 'rxjs'
   providedIn: 'root'
 })
 export class DataSharingService {
+
+  public datas = [
+    {
+      "name": 'hyder',
+      "filter": "personal"
+    },
+    {
+      "name": 'rahul',
+      "filter": "personal"
+    },
+    {
+      "name": 'manu',
+
+    },
+    {
+      "name": 'danish',
+      "filter": "personal"
+    },
+    { "name": 'asif' }
+  ];
+
   private usernameSource = new BehaviorSubject<string>('');
   currentUsername = this.usernameSource.asObservable();
   private handleUserSM = new BehaviorSubject<boolean>(false);
   currenUserSm = this.handleUserSM.asObservable();
   private handleShowProfile = new BehaviorSubject<boolean>(true);
   currentShowProfile = this.handleShowProfile.asObservable();
+  private handleUserProfiledata = new BehaviorSubject<any[]>(this.datas);
+  currenthandleUserProfiledata = this.handleUserProfiledata.asObservable();
+ 
 
   constructor() { }
 
@@ -19,10 +43,14 @@ export class DataSharingService {
   };
   handleUsersm(userSm: boolean) {
     this.handleUserSM.next(userSm);
-  }
-  showProfile(show: boolean){
+  };
+  showProfile(show: boolean) {
     this.handleShowProfile.next(show);
+  };
+  handleUserProfile(profile:any[]){
+    this.handleUserProfiledata.next(profile);
   }
+
 
 
 }
