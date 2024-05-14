@@ -31,6 +31,7 @@ export class UsersComponent implements OnInit {
     const back: boolean = false;
     this.dataSharing.handleUsersm(back);
     this.router.navigate([params]);
+    this.dataSharing.showProfile(true);
 
   }
   getName() {

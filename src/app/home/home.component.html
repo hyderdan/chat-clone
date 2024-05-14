@@ -1,29 +1,29 @@
 <div class="home-mainDiv">
-        <div class="nav-sidebar-l">
+    <div class="nav-sidebar-l">
         <ul class="lg:block md:block hidden">
-            <li><fa-icon [icon]="chat"></fa-icon> All Chat</li>
-            <li><fa-icon [icon]="faUser"></fa-icon> Personal</li>
+            <li (click)="allChat()"><fa-icon [icon]="chat"></fa-icon> All Chat</li>
+            <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon> Personal</li>
             <li><fa-icon [icon]="channel"></fa-icon> Channel</li>
             <li><fa-icon [icon]="profile"></fa-icon> profile</li>
         </ul>
     </div>
     <div class="nav-sidebar-sm">
         <ul class="lg:hidden md:hidden sm:block hidden">
-            <li><fa-icon [icon]="chat"></fa-icon></li>
-            <li><fa-icon [icon]="faUser"></fa-icon></li>
+            <li (click)="allChat()"><fa-icon [icon]="chat"></fa-icon></li>
+            <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon></li>
             <li><fa-icon [icon]="channel"></fa-icon></li>
             <li><fa-icon [icon]="profile"></fa-icon></li>
         </ul>
     </div>
     <div class="nav-sidebar-sm">
         <ul class="lg:hidden md:hidden sm:hidden  block">
-            <li><fa-icon [icon]="chat"></fa-icon></li>
-            <li><fa-icon [icon]="faUser"></fa-icon></li>
+            <li (click)="allChat()"><fa-icon [icon]="chat"></fa-icon></li>
+            <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon></li>
             <li><fa-icon [icon]="channel"></fa-icon></li>
             <li><fa-icon [icon]="profile"></fa-icon></li>
         </ul>
     </div>
 
-    
+
 
 </div>

@@ -13,18 +13,27 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 export class ChatComponent implements OnInit {
   username = "";
 
-  constructor(private dataSharing: DataSharingService, private route:Router, private router:ActivatedRoute) { }
+  constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.handlechatDatas();
   }
+  public datas: any
+  // public datas = [
+  //   { "name": 'hyder',
+  //     "filter": "personal"
+  //    },
+  //   { "name": 'rahul',
+  //   "filter": "personal"
+  //    },
+  //   { "name": 'manu',
 
-  public datas = [
-    { "name": 'hyder' },
-    { "name": 'rahul' },
-    { "name": 'manu' },
-    { "name": 'danish' },
-    { "name": 'asif' }
-  ];
+  //    },
+  //   { "name": 'danish',
+  //   "filter": "personal"
+  //    },
+  //   { "name": 'asif' }
+  // ];
   user = 'chat'
 
   handleusername(params: string) {
@@ -36,14 +45,20 @@ export class ChatComponent implements OnInit {
 
 
   }
-  handlechat(params: string, params2:string){
-    this.dataSharing.changeUsername(params2);  
-    const toggleChat:boolean = true;
+  handlechat(params: string, params2: string) {
+    this.dataSharing.changeUsername(params2);
+    const toggleChat: boolean = true;
     this.route.navigate([params]);
     this.dataSharing.handleUsersm(toggleChat);
     const back: boolean = false;
     this.dataSharing.showProfile(back);
 
+  }
+  handlechatDatas() {
+    this.dataSharing.currenthandleUserProfiledata.subscribe(chatdatas => {
+      this.datas = chatdatas;
+      console.log(chatdatas);
+    })
   }
 
 }
