@@ -56,4 +56,18 @@
 }
 /* nav-bar sm ends*/
 
+.chat-com{
+    width: 50%;
+}
+.chat-users{
+    width: 43%;
+}
 
+@media(width<800px){
+    .chat-users{
+        display: none;
+    }
+    .chat-com{
+        width: 100%;
+    }
+}
