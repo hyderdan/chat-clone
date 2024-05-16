@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUser, faComment, faPeopleGroup, faBars } from '@fortawesome/free-solid-svg-icons';
 import { DataSharingService } from '../services/data-sharing.service';
+import { ChatComponent } from '../chat/chat.component';
+import { UsersComponent } from '../chat/users/users.component';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FontAwesomeModule],
+  imports: [FontAwesomeModule,ChatComponent,UsersComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
