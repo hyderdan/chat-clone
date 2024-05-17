@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ReactiveFormsModule,  } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ReactiveFormsModule, } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RouteGuardService } from '../../services/route-guard.service';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,10 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  public defaultPhoneNo:number = 9207403126;
-  public defaultPassword = "1234";
+  public defaultPhoneNo: number = 9207403126;
+  public defaultPassword = "hyder";
 
-  constructor(private route: Router, private FB: FormBuilder) { }
+  constructor(private route: Router, private FB: FormBuilder, private RG:RouteGuardService) { }
 
 
   phoneNumberValidation(params: AbstractControl) {
@@ -28,14 +29,20 @@ export class LoginComponent {
     password: ['', Validators.required]
   })
 
-  OnSubmit(){
+  OnSubmit() {
     const isValid = this.createLoginForm.valid;
-    if(isValid){
-      const providedPhoneNo:number =  this.createLoginForm.controls['phoneNumber'].value;
-      const providedPassword:any = this.createLoginForm.controls['password'].value;
-      console.log(providedPhoneNo, providedPassword);
-    }else{
-      alert('inavalid phone No or passwors')
+    if (isValid) {
+      const providedPhoneNo: number = this.createLoginForm.controls['phoneNumber'].value;
+      const providedPassword: string = this.createLoginForm.controls['password'].value;
+      console.log(providedPassword);
+      const checkPhoneNo = providedPhoneNo == this.defaultPhoneNo;
+      const checkPassword = providedPassword == this.defaultPassword;
+      if (checkPhoneNo && checkPassword) {
+        this.RG.login();
+        this.route.navigate(['home']);
+      } else {
+        alert('this account is not exist');
+      }
     }
   }
 

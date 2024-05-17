@@ -1,19 +1,31 @@
-<div class=" chats bg-red-400 ">
-    <div class="chat-users-l lg:block  md:block sm:hidden hidden ">
-        <ul>
-            <li *ngFor="let item of datas" (click)="handleusername(item.name)">
-                <div class="chat-profilePic-l"></div>{{item.name}}
-            </li>
-        </ul>
+<div class=" chats ">
+    <!-- <div>
+        <div class="chat-users-l lg:block  md:block sm:hidden hidden ">
+            <ul>
+                <li *ngFor="let item of datas" (click)="handleusername(item.name)">
+                    <div class="chat-profilePic-l"></div>{{item.name}}
+                </li>
+            </ul>
+        </div>
+
+        <div class="chat-users-l lg:hidden  md:hidden sm:block block ">
+            <ul>
+                <li *ngFor="let item of datas" (click)="handlechat('chat/user', item.name)">
+                    <div class="chat-profilePic-l"></div>{{item.name}}
+                </li>
+            </ul>
+        </div>
+    </div> -->
+
+    <div class="profileDetails-l">
+        <div class="profileDetailsSub-l">
+            <div class="active-Not"></div>
+            <h1>online</h1>
+        </div>
+        <div class="profileDetailsusername-l">
+            <h1>USER NAME</h1>
+        </div>
+        di
+       
     </div>
-
-    <div class="chat-users-l lg:hidden  md:hidden sm:block block ">
-        <ul>
-            <li *ngFor="let item of datas" (click)="handlechat('chat/user', item.name)">
-                <div class="chat-profilePic-l"></div>{{item.name}}
-            </li>
-        </ul>
-    </div>
-
-
 </div>
