@@ -12,11 +12,13 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class ChatComponent implements OnInit {
   username = "";
+  toggleChat:boolean = true
 
   constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.handlechatDatas();
+    this.handleChat();
   }
   public datas: any
   // public datas = [
@@ -58,6 +60,12 @@ export class ChatComponent implements OnInit {
     this.dataSharing.currenthandleUserProfiledata.subscribe(chatdatas => {
       this.datas = chatdatas;
       console.log(chatdatas);
+    })
+  }
+  handleChat(){
+    this.dataSharing.currenthandleToggleChat.subscribe(data=>{
+      this.toggleChat = data;
+      console.log(data);
     })
   }
 
