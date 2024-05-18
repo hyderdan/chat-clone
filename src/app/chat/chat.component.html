@@ -1,5 +1,5 @@
 <div class=" chats ">
-    <!-- <div>
+    <div *ngIf="toggleChat == true">
         <div class="chat-users-l lg:block  md:block sm:hidden hidden ">
             <ul>
                 <li *ngFor="let item of datas" (click)="handleusername(item.name)">
@@ -15,9 +15,9 @@
                 </li>
             </ul>
         </div>
-    </div> -->
+    </div>
 
-    <div class="profileDetails-l">
+    <div *ngIf="toggleChat == false" class="profileDetails-l">
         <div class="profileDetailsSub-l">
             <div class="active-Not"></div>
             <h1>online</h1>

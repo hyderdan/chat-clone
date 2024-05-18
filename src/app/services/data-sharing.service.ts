@@ -34,7 +34,8 @@ export class DataSharingService {
   currentShowProfile = this.handleShowProfile.asObservable();
   private handleUserProfiledata = new BehaviorSubject<any[]>(this.datas);
   currenthandleUserProfiledata = this.handleUserProfiledata.asObservable();
- 
+  private handleToggleChat = new BehaviorSubject<boolean>(true);
+  currenthandleToggleChat = this.handleToggleChat.asObservable();
 
   constructor() { }
 
@@ -49,8 +50,11 @@ export class DataSharingService {
   };
   handleUserProfile(profile:any[]){
     this.handleUserProfiledata.next(profile);
-  }
+  };
 
+  handletoggleChat(params:boolean){
+    this.handleToggleChat.next(params)
+  }
 
 
 }

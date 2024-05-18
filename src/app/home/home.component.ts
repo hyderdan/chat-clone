@@ -1,20 +1,23 @@
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faUser, faComment, faPeopleGroup, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faComment, faPeopleGroup, faBars, faLeaf } from '@fortawesome/free-solid-svg-icons';
 import { DataSharingService } from '../services/data-sharing.service';
 import { ChatComponent } from '../chat/chat.component';
 import { UsersComponent } from '../chat/users/users.component';
+import { SearchComponent } from '../search/search.component';
+import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FontAwesomeModule,ChatComponent,UsersComponent],
+  imports: [FontAwesomeModule,ChatComponent,UsersComponent,SearchComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  toggleSearch:boolean = true;
   public faUser = faUser
   public chat = faComment;
   public channel = faPeopleGroup;
@@ -47,10 +50,23 @@ export class HomeComponent {
     });
     console.log(filteredArray);
     this.DS.handleUserProfile(filteredArray);
+    this.DS.handletoggleChat(true);
+    this.toggleSearch = true;
+
   };
 
   allChat() {
     this.DS.handleUserProfile(this.datas);
+    this.DS.handletoggleChat(true);
+    this.toggleSearch = true;
+  }
+  profileShow(){
+    this.DS.handletoggleChat(false);
+    this.toggleSearch = true;
+    console.log(false)
+  }
+  search(){
+    this.toggleSearch = false;
   }
 
 }
