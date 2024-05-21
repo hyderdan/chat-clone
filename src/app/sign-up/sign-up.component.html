@@ -2,27 +2,51 @@
 
     <div class="form-wrapper">
         <h2>Create Account</h2>
-        <form action="#">
+        <form [formGroup]="createFormGroup">
             <div class="form-control">
-                <input type="text" required>
+                <input type="text" formControlName="phoneNo" required>
                 <label>phone number</label>
+                <div style="color: red;  font-size: 10px;"
+                *ngIf="createFormGroup.get('phoneNo')?.errors?.['invalidPhoneNumber']&& createFormGroup.get('phoneNo')?.touched">
+                Invalid phone number. Please enter a 10-digit phone number.
             </div>
+            </div>
+            
             <div class="form-control">
-                <input type="text" required>
+                <input type="text" formControlName="username" required>
                 <label>Username</label>
+                <div style="color: red;  font-size: 12px;"
+                *ngIf="createFormGroup.get('username')?.errors?.['required'] && createFormGroup.get('username')?.touched">
+                username is required.
+            </div>
             </div>
             <div class="form-control">
-                <input type="password" required>
+                <input type="password" formControlName="password" required>
                 <label>Password</label>
+                <div style="color: red; font-size: 12px;"
+                *ngIf="createFormGroup.get('password')?.errors?.['required'] && createFormGroup.get('password')?.touched">
+                Password is required.
             </div>
+            <div style="color: red; font-size: 12px;"
+            *ngIf="createFormGroup.get('password')?.errors?.['invalidPassword'] && createFormGroup.get('password')?.touched">
+            Password required at least one uppercase letter, one lowercase letter, and one digit.
+        </div>
+            </div>
+            
             <div class="form-control">
-                <input type="password" required>
+                <input type="password" formControlName="confirmPass" required>
                 <label>Confirm Password</label>
+                <div style="color: red;  font-size: 12px;"
+                *ngIf="createFormGroup.get('confirmPass')?.errors?.['required'] && createFormGroup.get('confirmPass')?.touched">
+                Confirm Password is required.
             </div>
-            <button type="submit">Sign In</button>
+            </div>
+           
+            <button (click)="signUp()">Sign Up</button>
 
         </form>
-        <p>Already have an account? &nbsp;<button style="color: white;" (click)="navigateToLogin('')"> click here</button>
+        <p>Already have an account? &nbsp;<button style="color: white;" (click)="navigateToLogin('')"> click
+                here</button>
 
     </div>
 
