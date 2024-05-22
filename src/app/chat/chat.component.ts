@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { DataSharingService } from '../services/data-sharing.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { RouteGuardService } from '../services/route-guard.service';
 
 @Component({
   selector: 'app-chat',
@@ -12,9 +13,9 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class ChatComponent implements OnInit {
   username = "";
-  toggleChat:boolean = true
+  toggleChat: boolean = true
 
-  constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute) { }
+  constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute, private checkLogout: RouteGuardService) { }
 
   ngOnInit(): void {
     this.handlechatDatas();
@@ -62,11 +63,15 @@ export class ChatComponent implements OnInit {
       console.log(chatdatas);
     })
   }
-  handleChat(){
-    this.dataSharing.currenthandleToggleChat.subscribe(data=>{
+  handleChat() {
+    this.dataSharing.currenthandleToggleChat.subscribe(data => {
       this.toggleChat = data;
       console.log(data);
     })
+  }
+  logOut(){
+    this.checkLogout.logout();
+    this.route.navigate(['login']);
   }
 
 }

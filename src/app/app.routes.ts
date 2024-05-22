@@ -8,12 +8,12 @@ import { loginGuard } from './guards/login.guard';
 import { SearchComponent } from './search/search.component';
 
 export const routes: Routes = [
-    { path: 'home', component: HomeComponent, },
-    { path: 'chat', component: ChatComponent, },
-    { path: 'chat/user', component: UsersComponent,  },
+    { path: 'home', component: HomeComponent, canActivate: [loginGuard] },
+    { path: 'chat', component: ChatComponent, canActivate: [loginGuard] },
+    { path: 'chat/user', component: UsersComponent, canActivate: [loginGuard] },
     { path: 'sign-up', component: SignUpComponent },
     { path: 'login', component: LoginComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
-    {path: 'search',component: SearchComponent}
+    { path: 'search', component: SearchComponent, canActivate: [loginGuard] }
 
 ];

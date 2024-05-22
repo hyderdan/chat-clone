@@ -7,16 +7,27 @@ export class RouteGuardService {
   
   private isAuthenticated: boolean = false;
 
-  constructor() { }
+  constructor() { 
+    this.loadLoginCheck();
+  }
 
-  login(): void {
-    this.isAuthenticated = true;
+  login(params:boolean): void {
+    this.isAuthenticated = params;
+    sessionStorage.setItem('isAuthenticated',params.toString())
   }
   logout(): void {
-    this.isAuthenticated = false
+    this.isAuthenticated = false;
+    sessionStorage.removeItem('isAuthenticated');
   }
 
   isLoggedIn(): boolean {
     return this.isAuthenticated;
   }
+
+  private loadLoginCheck():void{
+  const LoginCheck = sessionStorage.getItem('isAuthenticated');
+  this.isAuthenticated = LoginCheck === 'true'
+
+  }
+  
 }

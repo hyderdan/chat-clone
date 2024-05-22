@@ -11,6 +11,9 @@ export class PostdatasService {
   postDatas(username: string, phoneNo: number, password: string, confirmPass: string) {
     return this.http.post<any>('http://localhost:3000/users/sigUp', { username, phoneNo, password, confirmPass })
   }
+  loginUser(phoneNo: number, password: string) {
+    return this.http.post<any>('http://localhost:3000/users/login', { phoneNo, password })
+  }
 
 
 }
