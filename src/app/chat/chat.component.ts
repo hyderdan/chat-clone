@@ -3,23 +3,26 @@ import { Component, OnInit } from '@angular/core';
 import { DataSharingService } from '../services/data-sharing.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { RouteGuardService } from '../services/route-guard.service';
+import { GetdatasService } from '../services/getdatas.service';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
   imports: [CommonModule],
+  providers: [GetdatasService],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css'
 })
 export class ChatComponent implements OnInit {
   username = "";
+  userProfile:any
   toggleChat: boolean = true
-
-  constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute, private checkLogout: RouteGuardService) { }
+  constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute, private checkLogout: RouteGuardService, private GetDatas: GetdatasService) { }
 
   ngOnInit(): void {
     this.handlechatDatas();
     this.handleChat();
+    this.getUserProfile()
   }
   public datas: any
   // public datas = [
@@ -69,10 +72,31 @@ export class ChatComponent implements OnInit {
       console.log(data);
     })
   }
-  logOut(){
+  logOut() {
     this.checkLogout.logout();
+    sessionStorage.removeItem('userToken');
+    sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('isAuthenticated')
     this.route.navigate(['login']);
   }
+
+  getUserProfile() {
+    const userprofileId = sessionStorage.getItem('userId');
+    console.log(userprofileId, 'hello')
+    this.GetDatas.getDatas(userprofileId).subscribe(
+      (data: any) => {
+        this.userProfile = data.userdata;
+          console.log(this.userProfile)
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+
+ 
+
 
 }
 
