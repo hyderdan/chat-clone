@@ -13,7 +13,7 @@ export class RouteGuardService {
 
   login(params:boolean): void {
     this.isAuthenticated = params;
-    sessionStorage.setItem('isAuthenticated',params.toString())
+    // sessionStorage.setItem('isAuthenticated',params.toString())
   }
   logout(): void {
     this.isAuthenticated = false;

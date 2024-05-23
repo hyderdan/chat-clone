@@ -23,9 +23,15 @@
             <h1>online</h1>
         </div>
         <div class="profileDetailsusername-l">
-            <h1>USER NAME</h1>
-        </div>
-        <button (click)="logOut()">Log Out</button>
+            <ul style="display: flex; justify-content: center; flex-direction: column; place-items: center;">
+                <li><h1>User Name: {{userProfile.username}}</h1></li>
+                <li><h1>Phone No: {{userProfile.phoneNo}}</h1></li>
+    
+            </ul>
+                  </div>
+                  <div  class="bg-red-400 pt-2 pb-2 pl-4 pr-4 rounded mt-10">
+                    <button (click)="logOut()">Log Out</button>
+                  </div>
        
     </div>
 </div>
