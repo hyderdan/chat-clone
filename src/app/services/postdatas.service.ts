@@ -14,6 +14,9 @@ export class PostdatasService {
   loginUser(phoneNo: number, password: string) {
     return this.http.post<any>('http://localhost:3000/users/login', { phoneNo, password })
   }
+  SearchUser(userName:string){
+    return this.http.post<any>('http://localhost:3000/users/searchUser',{userName});
+  }
 
 
 }

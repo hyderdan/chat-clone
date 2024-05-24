@@ -1,5 +1,16 @@
 <div class="search-mainDiv">
     <div class="serachInput-l">
-        <input type="text" placeholder="search...">
+        <div class=" w-full input-container">
+            <input type="text" [(ngModel)]="searachInput" (input)="handleSearch()" placeholder="search..." >
+            <div *ngIf="toggleloader == false" class="loader left-3/4"></div><div *ngIf="searachInput.length == 0 && toggleloader == false" class="closeButton">x</div>
+            <!-- <button class="bg-red-400 searchButton"  (click)=" handleSearch()">search</button> -->
+        </div><span></span>
+    </div>
+    <div class=" h-auto serachprofles">
+        <ul>
+            <li *ngFor="let item of users" >
+                <div class="chat-profilePic-l"></div> {{item.username}}
+               </li>
+        </ul>
     </div>
 </div>
