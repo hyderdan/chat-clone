@@ -38,7 +38,9 @@
     color: black;
   
 }
-
+.AddTOFreindList{
+  float: right;
+}
 /* HTML: <div class="loader"></div> */
 
 /* In your component CSS file */

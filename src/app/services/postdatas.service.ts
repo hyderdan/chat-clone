@@ -17,7 +17,11 @@ export class PostdatasService {
   SearchUser(userName:string){
     return this.http.post<any>('http://localhost:3000/users/searchUser',{userName});
   }
-
-
+  AddToFriendList(friend_id:string,ID:any){
+    return this.http.post(`http://localhost:3000/users/AddFriend/${ID}`,{friend_id})
+  }
+  friendList(userid:any){
+    return this.http.get(`http://localhost:3000/users/friendList/${userid}`)
+  }
 }
 
