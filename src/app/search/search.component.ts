@@ -4,6 +4,7 @@ import { PostdatasService } from '../services/postdatas.service';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { DataSharingService } from '../services/data-sharing.service';
 
 @Component({
   selector: 'app-search',
@@ -21,7 +22,7 @@ export class SearchComponent implements OnInit {
   friend: any[] = [];
   ngOnInit(): void {
   }
-  constructor(private postdatas: PostdatasService) { }
+  constructor(private postdatas: PostdatasService, private DS:DataSharingService) { }
 
   handleSearch() {
     this.toggleloader = false
@@ -46,13 +47,5 @@ export class SearchComponent implements OnInit {
     )
 
   }
-  friendLists() {
-    const userid = sessionStorage.getItem('userId')
-    this.postdatas.friendList(userid).subscribe(
-      res => {
-       console.log(res)
-      }
-    )
-  }
-
+  
 }
