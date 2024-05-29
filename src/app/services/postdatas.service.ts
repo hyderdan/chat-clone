@@ -21,7 +21,7 @@ export class PostdatasService {
     return this.http.post(`http://localhost:3000/users/AddFriend/${ID}`,{friend_id})
   }
   friendList(userid:any){
-    return this.http.get(`http://localhost:3000/users/friendList/${userid}`)
+    return this.http.get<any>(`http://localhost:3000/users/friendList/${userid}`)
   }
 }
 

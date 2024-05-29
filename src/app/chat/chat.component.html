@@ -1,17 +1,18 @@
 <div class=" chats ">
     <div *ngIf="toggleChat == true">
         <div class="chat-users-l lg:block  md:block sm:hidden hidden ">
+            
             <ul>
-                <li *ngFor="let item of datas" (click)="handleusername(item.name)">
-                    <div class="chat-profilePic-l"></div>{{item.name}}
+                <li *ngFor="let item of datas" (click)="handleusername(item.username)">
+                    <div class="chat-profilePic-l"></div>{{item.username}}
                 </li>
             </ul>
         </div>
 
         <div class="chat-users-l lg:hidden  md:hidden sm:block block ">
             <ul>
-                <li *ngFor="let item of datas" (click)="handlechat('chat/user', item.name)">
-                    <div class="chat-profilePic-l"></div>{{item.name}}
+                <li *ngFor="let item of datas" (click)="handlechat('chat/user', item.username)">
+                    <div class="chat-profilePic-l"></div>{{item.username}}
                 </li>
             </ul>
         </div>

@@ -22,41 +22,20 @@ export class HomeComponent {
   public chat = faComment;
   public channel = faPeopleGroup;
   public profile = faBars;
-  public datas = [
-    {
-      "name": 'hyder',
-      "filter": "personal"
-    },
-    {
-      "name": 'rahul',
-      "filter": "personal"
-    },
-    {
-      "name": 'manu',
-
-    },
-    {
-      "name": 'danish',
-      "filter": "personal"
-    },
-    { "name": 'asif' }
-  ];
-
+  
   constructor(private DS: DataSharingService) { }
 
   handleFilter() {
-    const filteredArray = this.datas.filter((data) => {
-      return data.filter == "personal"
-    });
-    console.log(filteredArray);
-    this.DS.handleUserProfile(filteredArray);
+    // const filteredArray = this.datas.filter((data) => {
+    //   return data.filter == "personal"
+    // });
+    // console.log(filteredArray);
     this.DS.handletoggleChat(true);
     this.toggleSearch = true;
 
   };
 
   allChat() {
-    this.DS.handleUserProfile(this.datas);
     this.DS.handletoggleChat(true);
     this.toggleSearch = true;
   }

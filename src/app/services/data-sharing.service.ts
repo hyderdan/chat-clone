@@ -30,9 +30,9 @@ export class DataSharingService {
   currentUsername = this.usernameSource.asObservable();
   private handleUserSM = new BehaviorSubject<boolean>(false);
   currenUserSm = this.handleUserSM.asObservable();
-  private handleShowProfile = new BehaviorSubject<boolean>(true);
+  private handleShowProfile = new BehaviorSubject<any>('');
   currentShowProfile = this.handleShowProfile.asObservable();
-  private handleUserProfiledata = new BehaviorSubject<any[]>(this.datas);
+  private handleUserProfiledata = new BehaviorSubject<any[]>([]);
   currenthandleUserProfiledata = this.handleUserProfiledata.asObservable();
   private handleToggleChat = new BehaviorSubject<boolean>(true);
   currenthandleToggleChat = this.handleToggleChat.asObservable();
@@ -48,9 +48,9 @@ export class DataSharingService {
     this.handleUserSM.next(userSm);
   };
   showProfile(show: boolean) {
-    this.handleShowProfile.next(show);
+    this.handleShowProfile.next(sessionStorage.getItem('username'));
   };
-  handleUserProfile(profile: any[]) {
+  handleUserProfile(profile: any) {
     this.handleUserProfiledata.next(profile);
   };
 

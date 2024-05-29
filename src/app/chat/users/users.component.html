@@ -1,5 +1,5 @@
 <div class="user-main">
-    <div *ngIf="Gooback == false">
+    <div *ngIf="Gooback == checkGoBack ">
         <nav class="user-nav-xl">
             <button (click)="goBAck('/home')"><fa-icon [icon]="faarrowleft"></fa-icon></button>
             <h1>{{getValues}}</h1>

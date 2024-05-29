@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
 export class UsersComponent implements OnInit {
   constructor(private dataSharing: DataSharingService, private router: Router,) { };
   getValues = "";
-  public Gooback: boolean = true;
+  public Gooback: any = '';
+  checkGoBack:any = '';
   public faPlane = faPaperPlane;
   faarrowleft = faArrowLeft;
   chatSend = '';
@@ -42,6 +43,7 @@ export class UsersComponent implements OnInit {
   getShowProfile() {
     this.dataSharing.currentShowProfile.subscribe(showProfile => {
       this.Gooback = showProfile;
+      this.checkGoBack = sessionStorage.getItem('username');
       console.log(showProfile);
     })
   }
