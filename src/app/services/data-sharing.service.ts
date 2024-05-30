@@ -47,8 +47,8 @@ export class DataSharingService {
   handleUsersm(userSm: boolean) {
     this.handleUserSM.next(userSm);
   };
-  showProfile(show: boolean) {
-    this.handleShowProfile.next(sessionStorage.getItem('username'));
+  showProfile(show: any) {
+    this.handleShowProfile.next(show);
   };
   handleUserProfile(profile: any) {
     this.handleUserProfiledata.next(profile);
