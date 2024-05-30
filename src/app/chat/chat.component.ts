@@ -16,44 +16,54 @@ import { PostdatasService } from '../services/postdatas.service';
 })
 export class ChatComponent implements OnInit {
   username = "";
-  userProfile:any
+  userProfile: any
   toggleChat: boolean = true
-  constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute, private checkLogout: RouteGuardService, private GetDatas: GetdatasService, private PostData:PostdatasService) { }
+  constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute, private checkLogout: RouteGuardService, private GetDatas: GetdatasService, private PostData: PostdatasService) { }
 
   ngOnInit(): void {
     // this.handlechatDatas();
     this.handleChat();
     this.getUserProfile()
     this.friendLists();
+    this.ToggleShowProfile();
+    this.ToggleChangeUserName();
   }
   public datas: any
-  
+
   user = 'chat'
 
-  handleusername(params: string) {
+  handleusername(params: string, params2: any) {
     // this.username = params;
-    this.dataSharing.changeUsername(params);
-    const back: boolean = false;
-    this.dataSharing.showProfile(back);
-
-
+    sessionStorage.setItem('changeUsername', params)
+    sessionStorage.setItem('username', params2);
+    this.ToggleShowProfile();
+    this.ToggleChangeUserName();
 
   }
-  handlechat(params: string, params2: string) {
-    this.dataSharing.changeUsername(params2);
-    // const toggleChat: boolean = true;
-    this.route.navigate([params]);
-    // this.dataSharing.handleUsersm(params2);
-    sessionStorage.setItem('username', params2)
-    const back: boolean = false;
+  ToggleChangeUserName() {
+    const Data: any = sessionStorage.getItem('changeUsername')
+    this.dataSharing.changeUsername(Data);
+
+  }
+  ToggleShowProfile() {
+    const back: any = sessionStorage.getItem('username');
     this.dataSharing.showProfile(back);
+
+  }
+  handlechat(params: string, params2: string, params3: string) {
+    sessionStorage.setItem('changeUsername', params2)
+    sessionStorage.setItem('username', params3);
+    this.ToggleShowProfile();
+    this.ToggleChangeUserName();
+    this.route.navigate([params]);
+
 
   }
   friendLists() {
     const userid = sessionStorage.getItem('userId')
     this.PostData.friendList(userid).subscribe(
       res => {
-       console.log(res.friendList)
+        console.log(res.friendList)
         this.datas = res.friendList
       }
     )
@@ -85,7 +95,7 @@ export class ChatComponent implements OnInit {
     this.GetDatas.getDatas(userprofileId).subscribe(
       (data: any) => {
         this.userProfile = data.userdata;
-          console.log(this.userProfile)
+        console.log(this.userProfile)
       },
       error => {
         console.log(error);
@@ -94,7 +104,7 @@ export class ChatComponent implements OnInit {
   }
 
 
- 
+
 
 
 }

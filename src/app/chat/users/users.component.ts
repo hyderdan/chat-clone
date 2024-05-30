@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit {
   constructor(private dataSharing: DataSharingService, private router: Router,) { };
   getValues = "";
   public Gooback: any = '';
-  checkGoBack:any = '';
+  checkGoBack: any = 'false';
   public faPlane = faPaperPlane;
   faarrowleft = faArrowLeft;
   chatSend = '';
@@ -27,12 +27,28 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getName();
     this.getShowProfile();
+    this.ToggleChangeUserName();
+    this.ToggleShowProfile();
   }
   goBAck(params: string) {
     const back: boolean = false;
-    this.dataSharing.handleUsersm(back);
     this.router.navigate([params]);
     this.dataSharing.showProfile(true);
+    this.ToggleGoback();
+  }
+  ToggleGoback() {
+    sessionStorage.setItem('username', 'false')
+    this.checkGoBack = sessionStorage.getItem('username');
+
+  }
+  ToggleChangeUserName() {
+    const Data: any = sessionStorage.getItem('changeUsername')
+    this.dataSharing.changeUsername(Data);
+
+  }
+  ToggleShowProfile() {
+    const back: any = sessionStorage.getItem('username');
+    this.dataSharing.showProfile(back);
 
   }
   getName() {
@@ -41,10 +57,10 @@ export class UsersComponent implements OnInit {
     })
   }
   getShowProfile() {
+    //  sessionStorage.getItem('username');
     this.dataSharing.currentShowProfile.subscribe(showProfile => {
-      this.Gooback = showProfile;
-      this.checkGoBack = sessionStorage.getItem('username');
-      console.log(showProfile);
+      this.checkGoBack = showProfile
+      console.log("h", this.checkGoBack);
     })
   }
 
