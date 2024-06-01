@@ -28,16 +28,24 @@ export class DataSharingService {
 
   private usernameSource = new BehaviorSubject<string>('');
   currentUsername = this.usernameSource.asObservable();
+
   private handleUserSM = new BehaviorSubject<boolean>(false);
   currenUserSm = this.handleUserSM.asObservable();
+
   private handleShowProfile = new BehaviorSubject<any>('');
   currentShowProfile = this.handleShowProfile.asObservable();
+
   private handleUserProfiledata = new BehaviorSubject<any[]>([]);
   currenthandleUserProfiledata = this.handleUserProfiledata.asObservable();
+
   private handleToggleChat = new BehaviorSubject<boolean>(true);
   currenthandleToggleChat = this.handleToggleChat.asObservable();
+
   private handleuserprofile = new BehaviorSubject<any>([]);
   currenthandleuserprofile= this.handleuserprofile.asObservable();
+
+  private  HandleUserId = new BehaviorSubject<any>([]);
+  currentHandleUserId = this.HandleUserId.asObservable();
  
   constructor() { }
 
@@ -60,6 +68,8 @@ export class DataSharingService {
   hendleProfileSharing(params:any){
     this.handleuserprofile.next(params)
   }
-
+  HandleuserId(param:any){
+    this.HandleUserId.next(param);
+  }
   
 }

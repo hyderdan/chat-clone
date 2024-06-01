@@ -3,7 +3,7 @@
         <div class="chat-users-l lg:block  md:block sm:hidden hidden ">
 
             <ul>
-                <li *ngFor="let item of datas" (click)="handleusername(item.username, 'true')">
+                <li *ngFor="let item of datas" (click)="handleusername(item.username, 'true', item._id)">
                     <div class="chat-profilePic-l"></div>{{item.username}}
                 </li>
             </ul>

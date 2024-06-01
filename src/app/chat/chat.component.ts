@@ -16,7 +16,7 @@ import { PostdatasService } from '../services/postdatas.service';
 })
 export class ChatComponent implements OnInit {
   username = "";
-  userProfile: any
+  userProfile: any = 'false'
   toggleChat: boolean = true
   constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute, private checkLogout: RouteGuardService, private GetDatas: GetdatasService, private PostData: PostdatasService) { }
 
@@ -32,17 +32,20 @@ export class ChatComponent implements OnInit {
 
   user = 'chat'
 
-  handleusername(params: string, params2: any) {
+  handleusername(params: string, params2: any, params3: any,) {
     // this.username = params;
     sessionStorage.setItem('changeUsername', params)
     sessionStorage.setItem('username', params2);
+    sessionStorage.setItem('FavUserId', params3);
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
 
   }
   ToggleChangeUserName() {
     const Data: any = sessionStorage.getItem('changeUsername')
+    const Data2: any = sessionStorage.getItem('FavUserId')
     this.dataSharing.changeUsername(Data);
+    this.dataSharing.HandleuserId(Data2);
 
   }
   ToggleShowProfile() {
