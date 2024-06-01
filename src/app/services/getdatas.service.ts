@@ -11,4 +11,5 @@ export class GetdatasService {
   getDatas(userId:any){
     return this.http.get(`http://localhost:3000/users/singleUser/${userId}`)
   }
+  
 }

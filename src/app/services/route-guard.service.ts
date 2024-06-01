@@ -18,6 +18,12 @@ export class RouteGuardService {
   logout(): void {
     this.isAuthenticated = false;
     sessionStorage.removeItem('isAuthenticated');
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('userToken');
+    sessionStorage.removeItem('changeUsername');
+    sessionStorage.removeItem('userId');
+    
+
   }
 
   isLoggedIn(): boolean {

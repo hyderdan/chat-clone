@@ -4,7 +4,8 @@
             <button (click)="goBAck('/home')"><fa-icon [icon]="faarrowleft"></fa-icon></button>
             <h1>{{getValues}}</h1>
             <ul>
-                <li>search</li>
+                <li (click)="HandleFavourate(GetUserId)"><fa-icon class='ToggleFavourates'
+                        [icon]="favourates"></fa-icon></li>
                 <li>menu</li>
             </ul>
         </nav>
@@ -15,8 +16,10 @@
                     <div class="chatSend"> </div>
                 </li>
                 <li>
-                    <div class="chatReceived"><h1>{{chatSend}}</h1> </div>
-                    
+                    <div class="chatReceived">
+                        <h1>{{chatSend}}</h1>
+                    </div>
+
                 </li>
             </ul>
         </div>
@@ -25,7 +28,7 @@
             <button><fa-icon [icon]="faPlane"></fa-icon></button>
         </div>
     </div>
-    <div *ngIf="checkGoBack === 'false' "  style="text-align: center; height: 100%; place-content: center;">
+    <div *ngIf="checkGoBack === 'false' " style="text-align: center; height: 100%; place-content: center;">
         <h1>click any profile</h1>
     </div>
 

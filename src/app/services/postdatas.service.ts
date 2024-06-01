@@ -23,5 +23,8 @@ export class PostdatasService {
   friendList(userid:any){
     return this.http.get<any>(`http://localhost:3000/users/friendList/${userid}`)
   }
+  AddTOFavourate(FavId:any,userId:any){
+    return this.http.post<any>('http://localhost:3000/users/AddToFavourate',{FavId, userId});
+  }
 }
 
