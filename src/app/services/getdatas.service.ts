@@ -6,10 +6,13 @@ import { Injectable } from '@angular/core';
 })
 export class GetdatasService {
 
-  constructor( private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getDatas(userId:any){
+  getDatas(userId: any) {
     return this.http.get(`http://localhost:3000/users/singleUser/${userId}`)
+  }
+  GetFavouratesId(userId: any) {
+    return this.http.get(`http://localhost:3000/users/GetFavourates/${userId}`)
   }
   
 }

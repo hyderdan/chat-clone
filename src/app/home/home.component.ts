@@ -6,45 +6,49 @@ import { ChatComponent } from '../chat/chat.component';
 import { UsersComponent } from '../chat/users/users.component';
 import { SearchComponent } from '../search/search.component';
 import { CommonModule } from '@angular/common';
+import { GetdatasService } from '../services/getdatas.service';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FontAwesomeModule,ChatComponent,UsersComponent,SearchComponent, CommonModule],
+  imports: [FontAwesomeModule, ChatComponent, UsersComponent, SearchComponent, CommonModule],
+  providers: [GetdatasService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  toggleSearch:boolean = true;
+  toggleSearch: boolean = true;
   public faUser = faUser
   public chat = faComment;
   public channel = faPeopleGroup;
   public profile = faBars;
-  
-  constructor(private DS: DataSharingService) { }
+
+  constructor(private DS: DataSharingService, private CallFunction: GetdatasService , ) { }
 
   handleFilter() {
-    // const filteredArray = this.datas.filter((data) => {
-    //   return data.filter == "personal"
-    // });
-    // console.log(filteredArray);
+    sessionStorage.setItem('isFavurate','true');
+    this.DS.HandleTogglefav('true')
     this.DS.handletoggleChat(true);
     this.toggleSearch = true;
-
   };
 
   allChat() {
     this.DS.handletoggleChat(true);
     this.toggleSearch = true;
+    this.togleAllchat()
   }
-  profileShow(){
+  togleAllchat(){
+    sessionStorage.setItem('isFavurate', 'false');
+    this.DS.HandleTogglefav('false')
+  }
+  profileShow() {
     this.DS.handletoggleChat(false);
     this.toggleSearch = true;
     console.log(false)
   }
-  search(){
+  search() {
     this.toggleSearch = false;
   }
 

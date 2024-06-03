@@ -22,6 +22,7 @@ export class RouteGuardService {
     sessionStorage.removeItem('userToken');
     sessionStorage.removeItem('changeUsername');
     sessionStorage.removeItem('userId');
+    sessionStorage.removeItem('isFavurate');
     
 
   }

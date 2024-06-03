@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PostdatasService } from '../../services/postdatas.service';
+import { GetdatasService } from '../../services/getdatas.service';
 
 
 @Component({
@@ -18,9 +19,10 @@ import { PostdatasService } from '../../services/postdatas.service';
   styleUrl: './users.component.css'
 })
 export class UsersComponent implements OnInit {
-  constructor(private dataSharing: DataSharingService, private router: Router, private PostService: PostdatasService) { };
+  constructor(private dataSharing: DataSharingService, private router: Router, private PostService: PostdatasService, private GetDatas:GetdatasService) { };
   getValues = "";
   GetUserId = ""
+  FavourateDatas:any;
   public Gooback: any = '';
   checkGoBack: any = 'false';
   public faPlane = faPaperPlane;
@@ -61,6 +63,7 @@ export class UsersComponent implements OnInit {
     this.dataSharing.currentHandleUserId.subscribe(data => {
       this.GetUserId = data;
     });
+
   }
   getShowProfile() {
     //  sessionStorage.getItem('username');
@@ -78,5 +81,15 @@ export class UsersComponent implements OnInit {
       alert(data.message);
     })
   }
+  GetFavourate() {
+    this.GetDatas.GetFavouratesId(sessionStorage.getItem('userId')).subscribe(
+      (data: any) => {
+        this.FavourateDatas = data.Favourates;
+        console.log(this.FavourateDatas);
+      }, error => {
+        console.log(error);
+      }
+    )
+    }
 
 }

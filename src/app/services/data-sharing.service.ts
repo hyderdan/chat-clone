@@ -6,25 +6,7 @@ import { BehaviorSubject } from 'rxjs'
 })
 export class DataSharingService {
 
-  public datas = [
-    {
-      "name": 'hyder',
-      "filter": "personal"
-    },
-    {
-      "name": 'rahul',
-      "filter": "personal"
-    },
-    {
-      "name": 'manu',
-
-    },
-    {
-      "name": 'danish',
-      "filter": "personal"
-    },
-    { "name": 'asif' }
-  ];
+  constructor() { }
 
   private usernameSource = new BehaviorSubject<string>('');
   currentUsername = this.usernameSource.asObservable();
@@ -47,7 +29,9 @@ export class DataSharingService {
   private  HandleUserId = new BehaviorSubject<any>([]);
   currentHandleUserId = this.HandleUserId.asObservable();
  
-  constructor() { }
+  private HandleToggleFav = new BehaviorSubject<any>('');
+  currentHandleToggleFav =this.HandleToggleFav.asObservable();
+  
 
   changeUsername(username: string) {
     this.usernameSource.next(username);
@@ -70,6 +54,9 @@ export class DataSharingService {
   }
   HandleuserId(param:any){
     this.HandleUserId.next(param);
+  }
+  HandleTogglefav(param:any){
+    this.HandleToggleFav.next(param);
   }
   
 }
