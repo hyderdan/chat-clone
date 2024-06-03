@@ -27,11 +27,12 @@ export class ChatComponent implements OnInit {
     this.friendLists();
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
+    this.GetFavourate();
   }
   public datas: any
-
+  public FavourateDatas: any;
   user = 'chat'
-
+  toggleFIlter: any = sessionStorage.getItem('isFavurate');
   handleusername(params: string, params2: any, params3: any,) {
     // this.username = params;
     sessionStorage.setItem('changeUsername', params)
@@ -86,9 +87,9 @@ export class ChatComponent implements OnInit {
   }
   logOut() {
     this.checkLogout.logout();
-    sessionStorage.removeItem('userToken');
-    sessionStorage.removeItem('userId');
-    sessionStorage.removeItem('isAuthenticated')
+    // sessionStorage.removeItem('userToken');
+    // sessionStorage.removeItem('userId');
+    // sessionStorage.removeItem('isAuthenticated')
     this.route.navigate(['login']);
   }
 
@@ -106,8 +107,24 @@ export class ChatComponent implements OnInit {
     );
   }
 
+  GetFavourate() {
+    this.GetDatas.GetFavouratesId(sessionStorage.getItem('userId')).subscribe(
+      (data: any) => {
+        this.FavourateDatas = data.Favourates;
+        console.log(this.FavourateDatas);
+      }, error => {
+        console.log(error);
+      }
+    )
+    this.toggleFav()
+  }
+  toggleFav() {
+    this.dataSharing.currentHandleToggleFav.subscribe(res => {
+      // console.log(res)
+      this.toggleFIlter = sessionStorage.getItem('isFavurate');
 
-
+    })
+  }
 
 
 }
