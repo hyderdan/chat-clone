@@ -28,11 +28,14 @@ export class HomeComponent {
   constructor(private DS: DataSharingService, private CallFunction: GetdatasService , ) { }
 
   handleFilter() {
-    sessionStorage.setItem('isFavurate','true');
-    this.DS.HandleTogglefav('true')
     this.DS.handletoggleChat(true);
     this.toggleSearch = true;
+    this.ToggleFilter()
   };
+  ToggleFilter(){
+    sessionStorage.setItem('isFavurate','true');
+    this.DS.HandleTogglefav('true')
+  }
 
   allChat() {
     this.DS.handletoggleChat(true);

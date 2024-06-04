@@ -3,12 +3,13 @@
         <nav  class="user-nav-xl">
             <button (click)="goBAck('/home')"><fa-icon [icon]="faarrowleft"></fa-icon></button>
             <h1>{{getValues}}</h1>
-            <ul >
-                <li *ngFor="let item of FavourateDatas" (click)="HandleFavourate(GetUserId)">
-                    <!-- <fa-icon  [icon] = "favourates" ></fa-icon> -->
-                    {{ item._id }} - {{ GetUserId }}
-                    <fa-icon class="ToggleFavourates" [icon]="item._id.includes(GetUserId) ? favourates : faarrowleft " ></fa-icon>
-                </li>
+            <ul>
+                    <li  *ngIf="HandleToggleStar.includes(GetUserId)" (click)="HandleFavourate(GetUserId)" >
+                        <fa-icon   class="ToggleFavourates" [icon]="favourates" ></fa-icon>
+                    </li>
+                    <li *ngIf="!HandleToggleStar.includes(GetUserId)" (click)="HandleFavourate(GetUserId)" >
+                        <fa-icon   class="ToggleFavourates2" [icon]="favourates" ></fa-icon>
+                    </li>
                 <li>menu</li>
             </ul>
         </nav>

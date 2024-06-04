@@ -22,6 +22,8 @@ export class UsersComponent implements OnInit {
   constructor(private dataSharing: DataSharingService, private router: Router, private PostService: PostdatasService, private GetDatas:GetdatasService) { };
   getValues = "";
   GetUserId = ""
+  ToggleStar = true
+  HandleToggleStar:any = [];
   FavourateDatas:any;
   public Gooback: any = '';
   checkGoBack: any = 'false';
@@ -34,6 +36,7 @@ export class UsersComponent implements OnInit {
     this.getShowProfile();
     this.ToggleChangeUserName();
     this.ToggleShowProfile();
+    this.GetFavourate();
   }
   goBAck(params: string) {
     const back: boolean = false;
@@ -78,14 +81,17 @@ export class UsersComponent implements OnInit {
     const profileId = sessionStorage.getItem('userId')
     console.log("usernam:", profileId);
     this.PostService.AddTOFavourate(param, profileId).subscribe(data => {
-      alert(data.message);
+      console.log(data.message);
+      window.location.reload();
+      this.GetFavourate();
     })
   }
   GetFavourate() {
     this.GetDatas.GetFavouratesId(sessionStorage.getItem('userId')).subscribe(
       (data: any) => {
-        this.FavourateDatas = data.Favourates;
-        console.log(this.FavourateDatas);
+        // this.FavourateDatas = data.Favourates;
+        this.HandleToggleStar = data.FavId
+        console.log(this.HandleToggleStar);
       }, error => {
         console.log(error);
       }

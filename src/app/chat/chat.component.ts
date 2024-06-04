@@ -32,7 +32,7 @@ export class ChatComponent implements OnInit {
   public datas: any
   public FavourateDatas: any;
   user = 'chat'
-  toggleFIlter: any = sessionStorage.getItem('isFavurate');
+  toggleFIlter: any = 'false';
   handleusername(params: string, params2: any, params3: any,) {
     // this.username = params;
     sessionStorage.setItem('changeUsername', params)
@@ -83,6 +83,7 @@ export class ChatComponent implements OnInit {
     this.dataSharing.currenthandleToggleChat.subscribe(data => {
       this.toggleChat = data;
       console.log(data);
+     this.GetFavourate();
     })
   }
   logOut() {

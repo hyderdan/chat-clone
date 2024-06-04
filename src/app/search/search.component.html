@@ -8,9 +8,12 @@
         </div><span></span>
     </div>
     <div class=" h-auto serachprofles">
-        <ul>
-            <li *ngFor="let item of users">
-                <div class="chat-profilePic-l"></div> {{item.username}}&nbsp; &nbsp; <fa-icon (click)="AddToFreindLIst(item._id)" class="AddTOFreindList" [icon]="addUser"></fa-icon>
+        <ul *ngFor="let item of users">
+            <li *ngIf="CompareID.includes(item._id)">
+                <div class="chat-profilePic-l"></div> {{item.username}}&nbsp; &nbsp; <fa-icon  (click)="AddToFreindLIst(item._id)" class="AddTOFreindList" [icon]="removeFreind"></fa-icon>
+            </li>
+            <li *ngIf="!CompareID.includes(item._id)">
+                <div class="chat-profilePic-l"></div> {{item.username}}&nbsp; &nbsp; <fa-icon  (click)="AddToFreindLIst(item._id)" class="AddTOFreindList" [icon]="addUser"></fa-icon>
             </li>        
 
         </ul>
