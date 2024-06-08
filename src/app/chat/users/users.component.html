@@ -16,20 +16,16 @@
         <div class="user-chat-show-l">
 
             <ul>
-                <li>
-                    <div class="chatSend"> </div>
+                <li *ngFor="let msg of messages">
+                  <div class="chatReceived">
+                    <h1>{{ msg }}</h1>
+                  </div>
                 </li>
-                <li>
-                    <div class="chatReceived">
-                        <h1>{{chatSend}}</h1>
-                    </div>
-
-                </li>
-            </ul>
+              </ul>
         </div>
         <div class="user-chat-type">
             <input type="text" [(ngModel)]="chatSend">
-            <button><fa-icon [icon]="faPlane"></fa-icon></button>
+            <button (click)="sendMessage()"><fa-icon [icon]="faPlane"></fa-icon></button>
         </div>
     </div>
     <div *ngIf="checkGoBack === 'false' " style="text-align: center; height: 100%; place-content: center;">
