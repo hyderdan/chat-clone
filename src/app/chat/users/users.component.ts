@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PostdatasService } from '../../services/postdatas.service';
 import { GetdatasService } from '../../services/getdatas.service';
+import { io } from 'socket.io-client';
 
 
 @Component({
@@ -31,13 +32,29 @@ export class UsersComponent implements OnInit {
   faarrowleft = faArrowLeft;
   chatSend = '';
   favourates = faStar;
+  messages: string[] = [];
+  socket: any;
   ngOnInit(): void {
     this.getName();
     this.getShowProfile();
     this.ToggleChangeUserName();
     this.ToggleShowProfile();
     this.GetFavourate();
+
+    this.socket = io('http://localhost:3000');
+    this.socket.on('chat message', (msg: string) => {
+      this.messages.push(msg);
+    });
+
   }
+
+  sendMessage(): void {
+    if (this.chatSend.trim()) {
+      this.socket.emit('chat message', this.chatSend);
+      this.chatSend = '';
+    }
+  }
+  
   goBAck(params: string) {
     const back: boolean = false;
     this.router.navigate([params]);
