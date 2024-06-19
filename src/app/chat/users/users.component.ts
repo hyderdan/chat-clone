@@ -20,14 +20,14 @@ import { ChatserviceService } from '../../services/chatservice.service';
   selector: 'app-users',
   standalone: true,
   imports: [ChatComponent, FontAwesomeModule, CommonModule, FormsModule,  // Initialize AngularFire
-   ],
-  providers: [PostdatasService,ChatserviceService,],
+  ],
+  providers: [PostdatasService, ChatserviceService,],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })
 export class UsersComponent implements OnInit {
-  constructor(private dataSharing: DataSharingService, private router: Router, private PostService: PostdatasService, private GetDatas: GetdatasService, 
-    private chatService:ChatserviceService
+  constructor(private dataSharing: DataSharingService, private router: Router, private PostService: PostdatasService, private GetDatas: GetdatasService,
+    private chatService: ChatserviceService
   ) { };
   getValues = "";
   GetUserId = ""
@@ -40,15 +40,16 @@ export class UsersComponent implements OnInit {
   faarrowleft = faArrowLeft;
   chatSend = '';
   favourates = faStar;
-  messages:any = []
-  username:any = 'hellofaker'
+  messages: any = []
+  username: any = 'hellofaker'
   message: any = '';
   ngOnInit(): void {
     this.getName();
-    this.getShowProfile();  
+    this.getShowProfile();
     this.ToggleChangeUserName();
     this.ToggleShowProfile();
     this.GetFavourate();
+   
 
   }
 
@@ -113,19 +114,26 @@ export class UsersComponent implements OnInit {
     )
   }
 
-   sendMessage(){
-      if(this.message.trim()){
-       this.chatService.sendmessage(this.username,this.message).subscribe(
-       (response:any) => {
+  sendMessage() {
+    if (this.message.trim()) {
+      this.chatService.sendmessage(this.username, this.message).subscribe(
+        (response: any) => {
           console.log('Message sent successfully:', response);
-          this.message = '';  // Clear the input field after sending the message
+          this.message = '';
+          this.getMess();
+            // Clear the input field after sending the message
         },
-        (error:any) => {
+        (error: any) => {
           console.error('Error sending message:', error);
         }
       );
-    this.message = '';
-  } 
-}
+    }
+  }
+  getMess(){
+    this.chatService.getMessages().subscribe((mes) => {
+      this.messages = mes;
+      console.log(this.messages);
+    })
+  }
 
 }
