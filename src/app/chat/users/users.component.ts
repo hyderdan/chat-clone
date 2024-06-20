@@ -49,6 +49,7 @@ export class UsersComponent implements OnInit {
     this.ToggleChangeUserName();
     this.ToggleShowProfile();
     this.GetFavourate();
+    this.getMess()
    
 
   }
@@ -120,7 +121,7 @@ export class UsersComponent implements OnInit {
         (response: any) => {
           console.log('Message sent successfully:', response);
           this.message = '';
-          this.getMess();
+          // this.getMess();
             // Clear the input field after sending the message
         },
         (error: any) => {
@@ -130,10 +131,12 @@ export class UsersComponent implements OnInit {
     }
   }
   getMess(){
-    this.chatService.getMessages().subscribe((mes) => {
+    this.chatService.getMessages().subscribe((mes)=>{
       this.messages = mes;
-      console.log(this.messages);
-    })
+    });
+    // this.chatService.messages$.subscribe((messages) => {
+    //   this.messages = messages;
+    // });
   }
 
 }
