@@ -19,7 +19,8 @@ export class ChatserviceService {
 
   constructor(private http: HttpClient) {
     this.socket = io(this.apiUrl);
-    this.socket.on('new-messages', (message: Messages) => {
+    
+    this.socket.on('new-message', (message: Messages) => {
       const currentMessages = this.messagesSubject.value;
       this.messagesSubject.next([...currentMessages, message]);
     });

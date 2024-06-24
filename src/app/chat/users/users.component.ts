@@ -131,9 +131,10 @@ export class UsersComponent implements OnInit {
     }
   }
   getMess(){
-    this.chatService.getMessages().subscribe((mes)=>{
+    this.chatService.messages$.subscribe((mes)=>{
       this.messages = mes;
     });
+    this.chatService.getMessages().subscribe();
     // this.chatService.messages$.subscribe((messages) => {
     //   this.messages = messages;
     // });
