@@ -35,11 +35,11 @@
 .user-chat-show-l {
     /* background-color: red; */
     height: 610px;
-    overflow: scroll;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    place-content: end;
+    place-content:end;
     /* scrcollbar-width: thin;  */
     /* scrollbar-color:rgb(3, 3, 17); */
     /* Define scrollbar track color */
@@ -48,13 +48,13 @@
 
 .user-chat-show-l::-webkit-scrollbar {
     background-color: rgb(3, 3, 17);
-    /* Track color */
+  
 }
 
 /* Customize scrollbar thumb */
 .user-chat-show-l::-webkit-scrollbar-thumb {
     background-color: rgb(3, 3, 17);
-    /* Thumb color */
+   
     border-radius: 10px;
     /* Border radius */
 }
@@ -62,7 +62,33 @@
 .user-chat-show-l::-webkit-scrollbar-corner {
     background-color: transparent;
 }
-
+.sender {
+    background-color: #3612d5; /* Light red for receiver */
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    align-self: flex-end;
+  }
+  
+  .receiver {
+    background-color: #930a15; /* Light red for receiver */
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    align-self: flex-start;
+  }
+  
+  .message-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .message {
+    max-width: 75%;
+    word-wrap: break-word;
+  }
 
 
 .user-chat-type {
@@ -90,6 +116,7 @@ border: none;
 .user-chat-show-l li{
     margin-bottom: 20px;
     margin-left: 30px;
+    
 }
 .chatSend{
     background-color: red;

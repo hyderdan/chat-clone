@@ -1,6 +1,7 @@
 export interface Messages {
-    key?: string;
-    username: string;
-    message: string;
-    timestamp: number;
-  }
+  key?: string;
+  sender_id: string;
+  receiver_id: string;
+  message: string;
+  timestamp: number;
+}

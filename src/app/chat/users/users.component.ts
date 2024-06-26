@@ -21,7 +21,7 @@ import { ChatserviceService } from '../../services/chatservice.service';
   standalone: true,
   imports: [ChatComponent, FontAwesomeModule, CommonModule, FormsModule,  // Initialize AngularFire
   ],
-  providers: [PostdatasService, ChatserviceService,],
+  providers: [PostdatasService, ChatserviceService,GetdatasService],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })
@@ -40,7 +40,8 @@ export class UsersComponent implements OnInit {
   faarrowleft = faArrowLeft;
   chatSend = '';
   favourates = faStar;
-  messages: any = []
+  messages: any = [];
+ currentUser = sessionStorage.getItem('userId');
   username: any = 'hellofaker'
   message: any = '';
   ngOnInit(): void {
@@ -117,7 +118,9 @@ export class UsersComponent implements OnInit {
 
   sendMessage() {
     if (this.message.trim()) {
-      this.chatService.sendmessage(this.username, this.message).subscribe(
+      const sender_id = sessionStorage.getItem('userId');
+      const receiver_id = sessionStorage.getItem('FavUserId')
+      this.chatService.sendmessage(sender_id, this.message, receiver_id).subscribe(
         (response: any) => {
           console.log('Message sent successfully:', response);
           this.message = '';
@@ -131,10 +134,15 @@ export class UsersComponent implements OnInit {
     }
   }
   getMess(){
-    this.chatService.messages$.subscribe((mes)=>{
-      this.messages = mes;
-    });
-    this.chatService.getMessages().subscribe();
+    this.dataSharing.currentUsername.subscribe((res)=>{
+      this.chatService.messages$.subscribe((mes)=>{
+        this.messages = mes;
+      });
+      const sender_id = sessionStorage.getItem('userId');
+      const receiver_id = sessionStorage.getItem('FavUserId')
+      this.chatService.getMessages(sender_id,receiver_id).subscribe();
+    })
+   
     // this.chatService.messages$.subscribe((messages) => {
     //   this.messages = messages;
     // });

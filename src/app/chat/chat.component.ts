@@ -40,6 +40,8 @@ export class ChatComponent implements OnInit {
     sessionStorage.setItem('FavUserId', params3);
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
+    // window.location.reload();
+
 
   }
   ToggleChangeUserName() {
@@ -59,7 +61,9 @@ export class ChatComponent implements OnInit {
     sessionStorage.setItem('username', params3);
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
+    // window.location.reload();
     this.route.navigate([params]);
+
 
 
   }

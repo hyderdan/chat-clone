@@ -26,11 +26,11 @@ export class ChatserviceService {
     });
    }
 
-  sendmessage(username: any, message: any) {
-    return this.http.post<any>('http://localhost:3000/send-mes', { username, message });
+  sendmessage(sender_id: any, message: any, receiver_id:any) {
+    return this.http.post<any>('http://localhost:3000/send-mes', { sender_id, message, receiver_id });
   }
-  getMessages(): Observable<Messages[]> {
-    return this.http.get<{ [key: string]: Messages }>('http://localhost:3000/get-mes').pipe(
+  getMessages(sender_id:any,receiver_id:any): Observable<Messages[]> {
+    return this.http.get<{ [key: string]: Messages }>(`http://localhost:3000/get-mes/${sender_id}/${receiver_id}`,).pipe(
       map(response => {
         if (!response) {
           return [];
