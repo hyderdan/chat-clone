@@ -15,13 +15,11 @@
         </nav>
         <div class="user-chat-show-l">
 
-            <ul>
-                <li *ngFor="let msg of messages">
-                  <div class="chatReceived">
-                    <h1>{{ msg.message }}</h1>
-                  </div>
-                </li>
-              </ul>
+            <div *ngFor="let message of messages" 
+       [ngClass]="{'sender': message.sender_id === currentUser, 'receiver': message.sender_id !== currentUser}" 
+       class="message">
+    <p><strong>{{message.sender}}</strong> {{message.message}}</p>
+  </div>
         </div>
         <div class="user-chat-type">
             <input type="text" [(ngModel)]="message">
