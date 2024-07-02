@@ -17,9 +17,17 @@
             </ul>
         </div>
 
-        <div class="chat-users-l lg:hidden  md:hidden sm:block block ">
+        <div *ngIf="toggleFIlter == 'false'" class="chat-users-l lg:hidden  md:hidden sm:block block ">
             <ul>
-                <li *ngFor="let item of datas" (click)="handlechat('chat/user', item.username, 'true')">
+                <li *ngFor="let item of datas" (click)="handlechat('chat/user', item.username, 'true', item._id)">
+                    <div class="chat-profilePic-l"></div>{{item.username}}
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="toggleFIlter == 'true'" class="chat-users-l lg:hidden  md:hidden sm:block block ">
+
+            <ul>
+                <li *ngFor="let item of FavourateDatas" (click)="handlechat('chat/user', item.username, 'true', item._id)">
                     <div class="chat-profilePic-l"></div>{{item.username}}
                 </li>
             </ul>

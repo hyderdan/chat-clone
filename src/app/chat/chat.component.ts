@@ -40,9 +40,14 @@ export class ChatComponent implements OnInit {
     sessionStorage.setItem('FavUserId', params3);
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
-    // window.location.reload();
-
-
+  }
+  handlechat(params: string, params2: string, params3: string, params4: string) {
+    sessionStorage.setItem('changeUsername', params2)
+    sessionStorage.setItem('username', params3);
+    sessionStorage.setItem('FavUserId', params4);
+    this.ToggleShowProfile();
+    this.ToggleChangeUserName();
+    this.route.navigate([params]);
   }
   ToggleChangeUserName() {
     const Data: any = sessionStorage.getItem('changeUsername')
@@ -56,17 +61,7 @@ export class ChatComponent implements OnInit {
     this.dataSharing.showProfile(back);
 
   }
-  handlechat(params: string, params2: string, params3: string) {
-    sessionStorage.setItem('changeUsername', params2)
-    sessionStorage.setItem('username', params3);
-    this.ToggleShowProfile();
-    this.ToggleChangeUserName();
-    // window.location.reload();
-    this.route.navigate([params]);
-
-
-
-  }
+  
   friendLists() {
     const userid = sessionStorage.getItem('userId')
     this.PostData.friendList(userid).subscribe(
