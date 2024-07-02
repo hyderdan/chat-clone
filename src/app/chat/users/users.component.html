@@ -1,25 +1,31 @@
 <div class="user-main">
     <div *ngIf="checkGoBack == 'true' ">
-        <nav  class="user-nav-xl">
+        <nav class="user-nav-xl">
             <button (click)="goBAck('/home')"><fa-icon [icon]="faarrowleft"></fa-icon></button>
             <h1>{{getValues}}</h1>
             <ul>
-                    <li  *ngIf="HandleToggleStar.includes(GetUserId)" (click)="HandleFavourate(GetUserId)" >
-                        <fa-icon   class="ToggleFavourates" [icon]="favourates" ></fa-icon>
-                    </li>
-                    <li *ngIf="!HandleToggleStar.includes(GetUserId)" (click)="HandleFavourate(GetUserId)" >
-                        <fa-icon   class="ToggleFavourates2" [icon]="favourates" ></fa-icon>
-                    </li>
-                <li>menu</li>
+                <li *ngIf="HandleToggleStar.includes(GetUserId)" (click)="HandleFavourate(GetUserId)">
+                    <fa-icon class="ToggleFavourates" [icon]="favourates"></fa-icon>
+                </li>
+                <li *ngIf="!HandleToggleStar.includes(GetUserId)" (click)="HandleFavourate(GetUserId)">
+                    <fa-icon class="ToggleFavourates2" [icon]="favourates"></fa-icon>
+                </li>
+                <li class="ClickM">MENU
+                    <div class="menu-bar">
+                        <ul>
+                            <li (click)="delmessage(currentUser,receiverId)">clearChat</li>
+                            <li (click)="removeFreindLIst()">remove </li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </nav>
-        <div class="user-chat-show-l">
-
-            <div *ngFor="let message of messages" 
-       [ngClass]="{'sender': message.sender_id === currentUser, 'receiver': message.sender_id !== currentUser}" 
-       class="message">
-    <p><strong>{{message.sender}}</strong> {{message.message}}</p>
-  </div>
+        <div class="user-chat-show-l" #chatContainer>
+            <div *ngFor="let message of messages"
+                [ngClass]="{'sender': message.sender_id === currentUser, 'receiver': message.sender_id !== currentUser}"
+                class="message">
+                <p><strong>{{message.sender}}</strong> {{message.message}}</p>
+            </div>
         </div>
         <div class="user-chat-type">
             <input type="text" [(ngModel)]="message">
