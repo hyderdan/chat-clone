@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faUser, faComment, faPeopleGroup, faBars, faLeaf } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faComment, faPeopleGroup, faBars, faLeaf, faBell } from '@fortawesome/free-solid-svg-icons';
 import { DataSharingService } from '../services/data-sharing.service';
 import { ChatComponent } from '../chat/chat.component';
 import { UsersComponent } from '../chat/users/users.component';
@@ -24,7 +24,7 @@ export class HomeComponent {
   public chat = faComment;
   public channel = faPeopleGroup;
   public profile = faBars;
-
+  public bell = faBell;
   constructor(private DS: DataSharingService, private CallFunction: GetdatasService , ) { }
 
   handleFilter() {
