@@ -5,6 +5,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { RouteGuardService } from '../services/route-guard.service';
 import { GetdatasService } from '../services/getdatas.service';
 import { PostdatasService } from '../services/postdatas.service';
+import { SockectservicesService } from '../services/sockectservices.service';
 
 @Component({
   selector: 'app-chat',
@@ -18,7 +19,9 @@ export class ChatComponent implements OnInit {
   username = "";
   userProfile: any = 'false'
   toggleChat: boolean = true
-  constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute, private checkLogout: RouteGuardService, private GetDatas: GetdatasService, private PostData: PostdatasService) { }
+  constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute,
+    private checkLogout: RouteGuardService, private GetDatas: GetdatasService,
+    private PostData: PostdatasService, private SockectService:SockectservicesService) { }
 
   ngOnInit(): void {
     // this.handlechatDatas();
@@ -28,6 +31,11 @@ export class ChatComponent implements OnInit {
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
     this.GetFavourate();
+    this.SockectService.on('friendListUpdate', (data: any) => {
+      // console.log('Friend list updated:', data);
+      this.friendLists(); 
+      
+    });
   }
   public datas: any
   public FavourateDatas: any;
@@ -61,7 +69,7 @@ export class ChatComponent implements OnInit {
     this.dataSharing.showProfile(back);
 
   }
-  
+
   friendLists() {
     const userid = sessionStorage.getItem('userId')
     this.PostData.friendList(userid).subscribe(
@@ -82,7 +90,7 @@ export class ChatComponent implements OnInit {
     this.dataSharing.currenthandleToggleChat.subscribe(data => {
       this.toggleChat = data;
       console.log(data);
-     this.GetFavourate();
+      this.GetFavourate();
     })
   }
   logOut() {
