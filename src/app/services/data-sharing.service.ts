@@ -31,7 +31,9 @@ export class DataSharingService {
  
   private HandleToggleFav = new BehaviorSubject<any>('');
   currentHandleToggleFav =this.HandleToggleFav.asObservable();
-  
+
+  private HandlePoint = new BehaviorSubject<any>('');
+  currrentHandlePoint = this.HandlePoint.asObservable();  
 
   changeUsername(username: string) {
     this.usernameSource.next(username);
@@ -58,5 +60,7 @@ export class DataSharingService {
   HandleTogglefav(param:any){
     this.HandleToggleFav.next(param);
   }
-  
+  handlePOint(param:any){
+    this.HandlePoint.next(param);
+  }
 }

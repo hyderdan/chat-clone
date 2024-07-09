@@ -1,7 +1,10 @@
 <div class="home-mainDiv">
     <div class="nav-sidebar-l">
         <ul class="lg:block md:block hidden">
-            <li (click)="allChat()"><fa-icon [icon]="chat"></fa-icon> All Chat</li>
+            <li (click)="allChat()">
+                <div *ngIf="newChat == 'true' " style="position: absolute;background-color: red; border-radius: 100%;
+             width: 10px; height: 10px;"></div><fa-icon [icon]="chat"></fa-icon> All Chat
+            </li>
             <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon> Favourates</li>
             <li (click)="search()"><fa-icon [icon]="channel"></fa-icon> search</li>
             <li (click)="profileShow()"><fa-icon [icon]="profile"></fa-icon> profile</li>
@@ -10,7 +13,10 @@
     </div>
     <div class="nav-sidebar-sm">
         <ul class="lg:hidden md:hidden sm:block hidden">
-            <li (click)="allChat()"><fa-icon [icon]="chat"></fa-icon></li>
+            <li (click)="allChat()">
+                <div *ngIf="newChat =='true'" style="position: absolute;background-color: red; border-radius: 100%;
+             width: 10px; height: 10px;"></div><fa-icon [icon]="chat"></fa-icon>
+            </li>
             <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon></li>
             <li (click)="search()"><fa-icon [icon]="channel"></fa-icon></li>
             <li (click)="profileShow()"><fa-icon [icon]="profile"></fa-icon></li>
@@ -19,16 +25,19 @@
     </div>
     <div class="nav-sidebar-sm">
         <ul class="lg:hidden md:hidden sm:hidden  block">
-            <li (click)="allChat()"><fa-icon [icon]="chat"></fa-icon></li>
+            <li (click)="allChat()">
+                <div *ngIf="newChat == 'true' " style="position: absolute;background-color: red; border-radius: 100%;
+             width: 10px; height: 10px;"></div><fa-icon [icon]="chat"></fa-icon>
+            </li>
             <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon></li>
             <li (click)="search()"><fa-icon [icon]="channel"></fa-icon></li>
             <li (click)="profileShow()"><fa-icon [icon]="profile"></fa-icon></li>
             <li (click)="profileShow()"><fa-icon [icon]="bell"></fa-icon></li>
         </ul>
     </div>
-    <div *ngIf="toggleSearch == true" class="chat-com" > <app-chat/> </div>
-    <div *ngIf="toggleSearch == false" class="chat-com" > <app-search/> </div>
-    <div class="chat-users" > <app-users/> </div>
+    <div *ngIf="toggleSearch == true" class="chat-com"> <app-chat /> </div>
+    <div *ngIf="toggleSearch == false" class="chat-com"> <app-search /> </div>
+    <div class="chat-users"> <app-users /> </div>
 
 
 
