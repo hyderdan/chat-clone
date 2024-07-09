@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUserPlus, faLock } from '@fortawesome/free-solid-svg-icons';
 import { DataSharingService } from '../services/data-sharing.service';
+import { SockectservicesService } from '../services/sockectservices.service';
 
 @Component({
   selector: 'app-search',
@@ -19,15 +20,26 @@ export class SearchComponent implements OnInit {
   addUser = faUserPlus;
   removeFreind = faLock
   searachInput: string = ""
-  FriendListIds:any = [];
+  FriendListIds: any = [];
   users: any[] = [];
   friend: any[] = [];
   CompareID: any = [];
-  ngOnInit(): void {
-    this.friendLists()
-  }
-  constructor(private postdatas: PostdatasService, private DS: DataSharingService, private postDatas:PostdatasService) { }
 
+  constructor(private postdatas: PostdatasService, private DS: DataSharingService, private postDatas: PostdatasService
+    , private SockectService: SockectservicesService
+  ) { }
+  ngOnInit(): void {
+    this.SockectService.on('friendListUpdate', (data: any) => {
+      // console.log('Friend list updated:', data);
+      this.friendLists();
+      this.handleNewChatpoint(data);
+
+    });
+  }
+  handleNewChatpoint(data:any){
+    this.DS.handlePOint(data.newChat)
+    sessionStorage.setItem('new-chat',data.newChat)
+  }
   handleSearch() {
     this.toggleloader = false
     setTimeout(() => {
@@ -44,12 +56,13 @@ export class SearchComponent implements OnInit {
   }
 
   AddToFreindLIst(param: any) {
-    const ID = sessionStorage.getItem('userId')
+    const ID = sessionStorage.getItem('userId');
     // console.log(ID);
     this.postdatas.AddToFriendList(param, ID).subscribe(
       (data: any) => {
         alert(data.mes)
         // console.log(data.message);
+        // sessionStorage.setItem('new-chat', data.newChat);
         this.friendLists();
       }
     )

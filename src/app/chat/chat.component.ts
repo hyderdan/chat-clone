@@ -34,8 +34,12 @@ export class ChatComponent implements OnInit {
     this.SockectService.on('friendListUpdate', (data: any) => {
       // console.log('Friend list updated:', data);
       this.friendLists(); 
-      
+      this.handleNewChatpoint(data);
     });
+  }
+  handleNewChatpoint(data:any){
+    this.dataSharing.handlePOint(data.newChat)
+    sessionStorage.setItem('new-chat',data.newChat)
   }
   public datas: any
   public FavourateDatas: any;
