@@ -4,8 +4,6 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, ReactiveFormsModul
 import { Router } from '@angular/router';
 import { RouteGuardService } from '../../services/route-guard.service';
 import { PostdatasService } from '../../services/postdatas.service';
-import { json } from 'stream/consumers';
-import { ChatComponent } from '../../chat/chat.component';
 import { GetdatasService } from '../../services/getdatas.service';
 import { DataSharingService } from '../../services/data-sharing.service';
 

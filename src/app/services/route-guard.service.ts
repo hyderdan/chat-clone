@@ -1,17 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common'
 
 @Injectable({
   providedIn: 'root'
 })
 export class RouteGuardService {
-  
+
   private isAuthenticated: boolean = false;
 
-  constructor() { 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.loadLoginCheck();
   }
 
-  login(params:boolean): void {
+  login(params: boolean): void {
     this.isAuthenticated = params;
     // sessionStorage.setItem('isAuthenticated',params.toString())
   }
@@ -23,7 +24,7 @@ export class RouteGuardService {
     sessionStorage.removeItem('changeUsername');
     sessionStorage.removeItem('userId');
     sessionStorage.removeItem('isFavurate');
-    
+
 
   }
 
@@ -31,10 +32,14 @@ export class RouteGuardService {
     return this.isAuthenticated;
   }
 
-  private loadLoginCheck():void{
-  const LoginCheck = sessionStorage.getItem('isAuthenticated');
-  this.isAuthenticated = LoginCheck === 'true'
+  private loadLoginCheck(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const loginCheck = sessionStorage.getItem('isAuthenticated');
+      this.isAuthenticated = loginCheck === 'true';
+    } else {
+      this.isAuthenticated = false; // Default value when not in a browser environment
+    }
 
   }
-  
+
 }
