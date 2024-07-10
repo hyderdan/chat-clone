@@ -6,7 +6,6 @@ import { ChatComponent } from './chat/chat.component';
 import { UsersComponent } from './chat/users/users.component';
 import { DataSharingService } from './services/data-sharing.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AngularFireModule } from '@angular/fire/compat';
 
 
 @Component({
