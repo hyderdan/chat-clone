@@ -2,8 +2,7 @@
     <div class="nav-sidebar-l">
         <ul class="lg:block md:block hidden">
             <li (click)="allChat()">
-                <div *ngIf="newChat == 'true' " style="position: absolute;background-color: red; border-radius: 100%;
-             width: 10px; height: 10px;"></div><fa-icon [icon]="chat"></fa-icon> All Chat
+            <div class="new-chaypoint" *ngIf="newChat == 'true' "></div><fa-icon [icon]="chat"></fa-icon> All Chat
             </li>
             <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon> Favourates</li>
             <li (click)="search()"><fa-icon [icon]="channel"></fa-icon> search</li>
@@ -14,8 +13,7 @@
     <div class="nav-sidebar-sm">
         <ul class="lg:hidden md:hidden sm:block hidden">
             <li (click)="allChat()">
-                <div *ngIf="newChat =='true'" style="position: absolute;background-color: red; border-radius: 100%;
-             width: 10px; height: 10px;"></div><fa-icon [icon]="chat"></fa-icon>
+            <div *ngIf="newChat =='true'" class="new-chaypoint"></div><fa-icon [icon]="chat"></fa-icon>
             </li>
             <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon></li>
             <li (click)="search()"><fa-icon [icon]="channel"></fa-icon></li>
@@ -26,8 +24,7 @@
     <div class="nav-sidebar-sm">
         <ul class="lg:hidden md:hidden sm:hidden  block">
             <li (click)="allChat()">
-                <div *ngIf="newChat == 'true' " style="position: absolute;background-color: red; border-radius: 100%;
-             width: 10px; height: 10px;"></div><fa-icon [icon]="chat"></fa-icon>
+            <div *ngIf="newChat == 'true' " class="new-chaypoint"></div><fa-icon [icon]="chat"></fa-icon>
             </li>
             <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon></li>
             <li (click)="search()"><fa-icon [icon]="channel"></fa-icon></li>
