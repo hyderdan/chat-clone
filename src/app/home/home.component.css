@@ -1,12 +1,13 @@
-.home-mainDiv{
+.home-mainDiv {
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: left;
 }
-.nav-sidebar-l{
-    
+
+.nav-sidebar-l {
+
     width: auto;
     height: 100vh;
     display: flex;
@@ -16,20 +17,24 @@
     background-color: rgb(3, 3, 17);
     color: white;
 }
-.nav-sidebar-l ul{
+
+.nav-sidebar-l ul {
     /* background-color: red; */
     margin-top: 20px;
     padding: 40px 20px 40px 20px;
 }
-.nav-sidebar-l li{
+
+.nav-sidebar-l li {
     padding-top: 20px;
     padding-bottom: 20px;
 }
-.nav-sidebar-l li:hover{
+
+.nav-sidebar-l li:hover {
     color: orangered;
 }
+
 /* nav-bar sm starts*/
-.nav-sidebar-sm{
+.nav-sidebar-sm {
     width: auto;
     height: 100vh;
     display: flex;
@@ -39,35 +44,49 @@
     background-color: rgb(3, 3, 17);
     color: white;
 }
-.nav-sidebar-sm ul{
+
+.nav-sidebar-sm ul {
     /* background-color: red; */
     margin-top: 20px;
     padding: 10px 20px 10px 20px;
 }
-.nav-sidebar-sm li{
+
+.nav-sidebar-sm li {
     padding-top: 20px;
     padding-bottom: 20px;
 
-   
-    
+
+
 }
-.nav-sidebar-sm li:hover{
+
+.nav-sidebar-sm li:hover {
     color: orangered;
 }
+
 /* nav-bar sm ends*/
 
-.chat-com{
+.chat-com {
     width: 50%;
 }
-.chat-users{
+
+.chat-users {
     width: 43%;
 }
 
-@media(width<800px){
-    .chat-users{
+@media(width<800px) {
+    .chat-users {
         display: none;
     }
-    .chat-com{
+
+    .chat-com {
         width: 100%;
     }
+}
+
+.new-chaypoint {
+    position: absolute;
+    background-color: red;
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
 }
