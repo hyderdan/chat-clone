@@ -11,7 +11,7 @@ import { DataSharingService } from '../../services/data-sharing.service';
   selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
-  providers: [PostdatasService, GetdatasService],
+  providers: [PostdatasService, GetdatasService,],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
