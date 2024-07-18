@@ -74,6 +74,8 @@ export class SearchComponent implements OnInit {
       res => {
         // console.log(this.CompareID)
         this.CompareID = res.friendId
+        this.DS.handlenot(res.userName);
+        // console.log()
       }
     )
   }

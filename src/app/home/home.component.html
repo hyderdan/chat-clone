@@ -7,7 +7,7 @@
             <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon> Favourates</li>
             <li (click)="search()"><fa-icon [icon]="channel"></fa-icon> search</li>
             <li (click)="profileShow()"><fa-icon [icon]="profile"></fa-icon> profile</li>
-            <li (click)="profileShow()"><fa-icon [icon]="bell"></fa-icon> notification</li>
+            <li (click)="handlenotification()"><fa-icon [icon]="bell">notification</fa-icon></li>
         </ul>
     </div>
     <div class="nav-sidebar-sm">
@@ -18,7 +18,7 @@
             <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon></li>
             <li (click)="search()"><fa-icon [icon]="channel"></fa-icon></li>
             <li (click)="profileShow()"><fa-icon [icon]="profile"></fa-icon></li>
-            <li (click)="profileShow()"><fa-icon [icon]="bell"></fa-icon></li>
+            <li (click)="handlenotification()"><fa-icon [icon]="bell"></fa-icon></li>
         </ul>
     </div>
     <div class="nav-sidebar-sm">
@@ -29,11 +29,13 @@
             <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon></li>
             <li (click)="search()"><fa-icon [icon]="channel"></fa-icon></li>
             <li (click)="profileShow()"><fa-icon [icon]="profile"></fa-icon></li>
-            <li (click)="profileShow()"><fa-icon [icon]="bell"></fa-icon></li>
+            <li (click)="handlenotification()"><fa-icon [icon]="bell"></fa-icon></li>
         </ul>
     </div>
     <div *ngIf="toggleSearch == true" class="chat-com"> <app-chat /> </div>
     <div *ngIf="toggleSearch == false" class="chat-com"> <app-search /> </div>
+    <div *ngIf="toggleSearch == 'true' " class="chat-com"> <app-notifications /> </div>
+
     <div class="chat-users"> <app-users /> </div>
 
 

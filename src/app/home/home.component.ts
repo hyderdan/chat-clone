@@ -8,20 +8,21 @@ import { SearchComponent } from '../search/search.component';
 import { CommonModule } from '@angular/common';
 import { GetdatasService } from '../services/getdatas.service';
 import { SockectservicesService } from '../services/sockectservices.service';
+import { NotificationsComponent } from '../notifications/notifications.component';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FontAwesomeModule, ChatComponent, UsersComponent, SearchComponent, CommonModule],
+  imports: [FontAwesomeModule, ChatComponent, UsersComponent, SearchComponent, NotificationsComponent,CommonModule],
   providers: [GetdatasService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   newChat: any;
-  toggleSearch: boolean = true;
+  toggleSearch: any = true;
   public faUser = faUser
   public chat = faComment;
   public channel = faPeopleGroup;
@@ -34,6 +35,9 @@ export class HomeComponent implements OnInit {
       // console.log('Friend list updated:', data);
      this.newChat = data.newChat
     });
+  }
+  handlenotification(){
+    this.toggleSearch = 'true'
   }
   // handleNewChatPoint() {
   //   this.DS.currrentHandlePoint.subscribe((res) => {
@@ -54,6 +58,7 @@ export class HomeComponent implements OnInit {
   allChat() {
     this.DS.handletoggleChat(true);
     this.toggleSearch = true;
+    this.newChat = 'false'
     this.togleAllchat()
   }
   togleAllchat() {
