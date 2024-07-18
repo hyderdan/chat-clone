@@ -159,7 +159,7 @@ export class UsersComponent implements OnInit, AfterViewChecked {
         // console.log(data.message);
         // this.friendLists();
         this.delmessage(ID,param);
-        window.location.reload();
+        // window.location.reload();
       }
     )
   }

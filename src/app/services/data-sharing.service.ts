@@ -24,16 +24,19 @@ export class DataSharingService {
   currenthandleToggleChat = this.handleToggleChat.asObservable();
 
   private handleuserprofile = new BehaviorSubject<any>([]);
-  currenthandleuserprofile= this.handleuserprofile.asObservable();
+  currenthandleuserprofile = this.handleuserprofile.asObservable();
 
-  private  HandleUserId = new BehaviorSubject<any>([]);
+  private HandleUserId = new BehaviorSubject<any>([]);
   currentHandleUserId = this.HandleUserId.asObservable();
- 
+
   private HandleToggleFav = new BehaviorSubject<any>('');
-  currentHandleToggleFav =this.HandleToggleFav.asObservable();
+  currentHandleToggleFav = this.HandleToggleFav.asObservable();
 
   private HandlePoint = new BehaviorSubject<any>('');
-  currrentHandlePoint = this.HandlePoint.asObservable();  
+  currrentHandlePoint = this.HandlePoint.asObservable();
+
+  private Handlenot = new BehaviorSubject<any>([]);
+  currentHandlenot = this.Handlenot.asObservable();
 
   changeUsername(username: string) {
     this.usernameSource.next(username);
@@ -51,16 +54,19 @@ export class DataSharingService {
   handletoggleChat(params: boolean) {
     this.handleToggleChat.next(params)
   }
-  hendleProfileSharing(params:any){
+  hendleProfileSharing(params: any) {
     this.handleuserprofile.next(params)
   }
-  HandleuserId(param:any){
+  HandleuserId(param: any) {
     this.HandleUserId.next(param);
   }
-  HandleTogglefav(param:any){
+  HandleTogglefav(param: any) {
     this.HandleToggleFav.next(param);
   }
-  handlePOint(param:any){
+  handlePOint(param: any) {
     this.HandlePoint.next(param);
+  }
+  handlenot(param: any) {
+    this.Handlenot.next(param)
   }
 }
