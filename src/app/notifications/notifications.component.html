@@ -1,8 +1,8 @@
 <div class="not-mainDiv">
     <div class="not-mess">
-        <ul>
-            <li *ngFor="let item of username">
-                You and {{ username }} are now friends
+        <ul *ngFor="let item of username">
+            <li>
+                You and {{ item }} are now friends
             </li>
         </ul>
     </div>

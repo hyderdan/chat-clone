@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SockectservicesService } from '../services/sockectservices.service';
 import { DataSharingService } from '../services/data-sharing.service';
 import { CommonModule } from '@angular/common';
+import { PostdatasService } from '../services/postdatas.service';
 
 @Component({
   selector: 'app-notifications',
@@ -14,14 +15,20 @@ export class NotificationsComponent implements OnInit {
 
   username: string[] = []
 
-  constructor(private Sockectservice: SockectservicesService, private dataSharing: DataSharingService) { }
+  constructor(private Sockectservice: SockectservicesService, private dataSharing: DataSharingService, private postdatas: PostdatasService) { }
+
   ngOnInit(): void {
-    this.Hnadlenot()
+    this.friendLists()
   }
-  Hnadlenot() {
-    this.dataSharing.currentHandlenot.subscribe((res) => {
-      this.username = res
-    })
+  friendLists() {
+    const userid = sessionStorage.getItem('userId')
+    this.postdatas.friendList(userid).subscribe(
+      res => {
+        // console.log(this.CompareID)
+        this.username = res.userName
+      }
+    )
   }
+
 
 }
