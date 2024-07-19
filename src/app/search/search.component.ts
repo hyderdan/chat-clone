@@ -31,10 +31,12 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.SockectService.on('friendListUpdate', (data: any) => {
       // console.log('Friend list updated:', data);
-      this.friendLists();
       this.handleNewChatpoint(data);
+      this.friendLists();
 
     });
+    this.friendLists();
+
   }
   handleNewChatpoint(data:any){
     this.DS.handlePOint(data.newChat)
@@ -74,8 +76,6 @@ export class SearchComponent implements OnInit {
       res => {
         // console.log(this.CompareID)
         this.CompareID = res.friendId
-        this.DS.handlenot(res.userName);
-        // console.log()
       }
     )
   }

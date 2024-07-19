@@ -20,6 +20,7 @@ export class ChatserviceService {
     this.socket = io(this.apiUrl);
     
     this.socket.on('new-message', (message: Messages) => {
+      // console.log(newChat)
       const currentMessages = this.messagesSubject.value;
       this.messagesSubject.next([...currentMessages, message]);
     });

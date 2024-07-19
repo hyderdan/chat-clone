@@ -38,6 +38,8 @@ export class HomeComponent implements OnInit {
   }
   handlenotification(){
     this.toggleSearch = 'true'
+    this.newChat = 'false'
+
   }
   // handleNewChatPoint() {
   //   this.DS.currrentHandlePoint.subscribe((res) => {
