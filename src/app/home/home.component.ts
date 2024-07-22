@@ -22,6 +22,7 @@ import { NotificationsComponent } from '../notifications/notifications.component
 })
 export class HomeComponent implements OnInit {
   newChat: any;
+  newchatPoint:any 
   toggleSearch: any = true;
   public faUser = faUser
   public chat = faComment;
@@ -35,10 +36,11 @@ export class HomeComponent implements OnInit {
       // console.log('Friend list updated:', data);
      this.newChat = data.newChat
     });
+    this.newChatPoint();
   }
   handlenotification(){
     this.toggleSearch = 'true'
-    this.newChat = 'false'
+    this.newChat = 'false';
 
   }
   // handleNewChatPoint() {
@@ -75,6 +77,11 @@ export class HomeComponent implements OnInit {
   search() {
     this.toggleSearch = false;
   }
+  newChatPoint(){
+    this.DS.currrentchatPoint.subscribe((res)=>{
+      this.newchatPoint = res;
 
+    })
+  }
 
 }

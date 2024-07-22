@@ -6,6 +6,7 @@ import { RouteGuardService } from '../services/route-guard.service';
 import { GetdatasService } from '../services/getdatas.service';
 import { PostdatasService } from '../services/postdatas.service';
 import { SockectservicesService } from '../services/sockectservices.service';
+import { ChatserviceService } from '../services/chatservice.service';
 
 @Component({
   selector: 'app-chat',
@@ -21,7 +22,8 @@ export class ChatComponent implements OnInit {
   toggleChat: boolean = true
   constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute,
     private checkLogout: RouteGuardService, private GetDatas: GetdatasService,
-    private PostData: PostdatasService, private SockectService:SockectservicesService) { }
+    private PostData: PostdatasService, private SockectService: SockectservicesService,
+    private chatservice: ChatserviceService) { }
 
   ngOnInit(): void {
     // this.handlechatDatas();
@@ -33,13 +35,13 @@ export class ChatComponent implements OnInit {
     this.GetFavourate();
     this.SockectService.on('friendListUpdate', (data: any) => {
       // console.log('Friend list updated:', data);
-      this.friendLists(); 
+      this.friendLists();
       this.handleNewChatpoint(data);
     });
   }
-  handleNewChatpoint(data:any){
+  handleNewChatpoint(data: any) {
     this.dataSharing.handlePOint(data.newChat)
-    sessionStorage.setItem('new-chat',data.newChat)
+    sessionStorage.setItem('new-chat', data.newChat)
   }
   public datas: any
   public FavourateDatas: any;
@@ -50,13 +52,19 @@ export class ChatComponent implements OnInit {
     sessionStorage.setItem('changeUsername', params)
     sessionStorage.setItem('username', params2);
     sessionStorage.setItem('FavUserId', params3);
+    sessionStorage.setItem('newChat', 'false');
+    window.location.reload();
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
+    this.chatservice.newChat$.subscribe((res)=>{
+      this.dataSharing.currrentchatpoint(res)
+    })
   }
   handlechat(params: string, params2: string, params3: string, params4: string) {
     sessionStorage.setItem('changeUsername', params2)
     sessionStorage.setItem('username', params3);
     sessionStorage.setItem('FavUserId', params4);
+    sessionStorage.setItem('newChat', 'false');
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
     this.route.navigate([params]);
