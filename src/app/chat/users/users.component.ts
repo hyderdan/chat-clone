@@ -130,7 +130,8 @@ export class UsersComponent implements OnInit, AfterViewChecked {
         (response: any) => {
           console.log('Message sent successfully:', response);
           this.message = '';
-          this.scrollToBottom();            // Clear the input field after sending the message
+          this.scrollToBottom();  
+                    // Clear the input field after sending the message
         },
         (error: any) => {
           console.error('Error sending message:', error);
@@ -142,7 +143,11 @@ export class UsersComponent implements OnInit, AfterViewChecked {
     this.dataSharing.currentUsername.subscribe((res) => {
       this.chatService.messages$.subscribe((mes) => {
         this.messages = mes;
+        console.log(mes);
       });
+      // this.chatService.newChat$.subscribe((chat)=>{
+      //   sessionStorage.setItem('newChat','true')
+      // });
       const sender_id = sessionStorage.getItem('userId');
       const receiver_id = sessionStorage.getItem('FavUserId')
       this.chatService.getMessages(sender_id, receiver_id).subscribe();

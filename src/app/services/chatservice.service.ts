@@ -10,20 +10,32 @@ import { io, Socket } from 'socket.io-client';
   providedIn: 'root'
 })
 export class ChatserviceService {
-
   private apiUrl = 'http://localhost:3000'; 
   private socket: Socket;
   private messagesSubject: BehaviorSubject<Messages[]> = new BehaviorSubject<Messages[]>([]);
   public messages$: Observable<Messages[]> = this.messagesSubject.asObservable();
 
+  private newChatSubject = new BehaviorSubject<boolean>(false);
+  newChat$ = this.newChatSubject.asObservable();
+
   constructor(private http: HttpClient) {
     this.socket = io(this.apiUrl);
     
     this.socket.on('new-message', (message: Messages) => {
-      // console.log(newChat)
+      console.log(message,'newmessage')
       const currentMessages = this.messagesSubject.value;
       this.messagesSubject.next([...currentMessages, message]);
     });
+
+      this.socket.on('new-chat', (newChat: boolean) => {
+        console.log('New chat status received:', newChat);
+        this.newChatSubject.next(newChat)
+    //   if (newChat) {
+    //  sessionStorage.setItem('newChat', newChat'true');
+         
+    //   }
+    });
+  
    }
 
   sendmessage(sender_id: any, message: any, receiver_id:any) {
