@@ -53,12 +53,9 @@ export class ChatComponent implements OnInit {
     sessionStorage.setItem('username', params2);
     sessionStorage.setItem('FavUserId', params3);
     sessionStorage.setItem('newChat', 'false');
-    window.location.reload();
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
-    this.chatservice.newChat$.subscribe((res)=>{
-      this.dataSharing.currrentchatpoint(res)
-    })
+    
   }
   handlechat(params: string, params2: string, params3: string, params4: string) {
     sessionStorage.setItem('changeUsername', params2)
@@ -72,7 +69,9 @@ export class ChatComponent implements OnInit {
   ToggleChangeUserName() {
     const Data: any = sessionStorage.getItem('changeUsername')
     const Data2: any = sessionStorage.getItem('FavUserId')
+    const toggleNewChat = sessionStorage.getItem('newChat');
     this.dataSharing.changeUsername(Data);
+    this.dataSharing.currrentchatpoint(toggleNewChat)
     this.dataSharing.HandleuserId(Data2);
 
   }

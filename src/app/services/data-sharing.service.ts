@@ -35,8 +35,8 @@ export class DataSharingService {
   private HandlePoint = new BehaviorSubject<any>('');
   currrentHandlePoint = this.HandlePoint.asObservable();
 
-  private chatPoint = new BehaviorSubject<boolean>(false);
-  currrentchatPoint = this.HandlePoint.asObservable();
+  private chatPoint = new BehaviorSubject<any>('');
+  currrentchatPoint = this.chatPoint.asObservable();
 
 
 
@@ -68,8 +68,9 @@ export class DataSharingService {
   handlePOint(param: any) {
     this.HandlePoint.next(param);
   }
-  currrentchatpoint(param: boolean) {
+  currrentchatpoint(param: any) {
     this.chatPoint.next(param);
+    console.log(param,'hy')
   };
 
 }

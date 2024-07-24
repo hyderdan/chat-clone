@@ -140,7 +140,7 @@ export class UsersComponent implements OnInit, AfterViewChecked {
     }
   }
   getMess() {
-    this.dataSharing.currentUsername.subscribe((res) => {
+    // this.dataSharing.currentUsername.subscribe((res) => {
       this.chatService.messages$.subscribe((mes) => {
         this.messages = mes;
         console.log(mes);
@@ -151,8 +151,9 @@ export class UsersComponent implements OnInit, AfterViewChecked {
       const sender_id = sessionStorage.getItem('userId');
       const receiver_id = sessionStorage.getItem('FavUserId')
       this.chatService.getMessages(sender_id, receiver_id).subscribe();
-    })
+    // })
   };
+  
   removeFreindLIst() {
     const ID = sessionStorage.getItem('userId')
     const param: any = sessionStorage.getItem('FavUserId')

@@ -9,36 +9,41 @@ import { CommonModule } from '@angular/common';
 import { GetdatasService } from '../services/getdatas.service';
 import { SockectservicesService } from '../services/sockectservices.service';
 import { NotificationsComponent } from '../notifications/notifications.component';
+import { ChatserviceService } from '../services/chatservice.service';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FontAwesomeModule, ChatComponent, UsersComponent, SearchComponent, NotificationsComponent,CommonModule],
+  imports: [FontAwesomeModule, ChatComponent, UsersComponent, SearchComponent, NotificationsComponent, CommonModule],
   providers: [GetdatasService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   newChat: any;
-  newchatPoint:any 
+  newchatPoint: any = sessionStorage.getItem('newChat')
   toggleSearch: any = true;
   public faUser = faUser
   public chat = faComment;
   public channel = faPeopleGroup;
   public profile = faBars;
   public bell = faBell;
-  constructor(private DS: DataSharingService, private CallFunction: GetdatasService, private sockectService: SockectservicesService) { }
+  constructor(private DS: DataSharingService, private CallFunction: GetdatasService, private sockectService: SockectservicesService
+    , private chatservice: ChatserviceService
+  ) { }
   ngOnInit(): void {
     // this.handleNewChatPoint();
     this.sockectService.on('friendListUpdate', (data: any) => {
       // console.log('Friend list updated:', data);
-     this.newChat = data.newChat
+      this.newChat = data.newChat
     });
     this.newChatPoint();
+    this.toggleChatPoint();
+
   }
-  handlenotification(){
+  handlenotification() {
     this.toggleSearch = 'true'
     this.newChat = 'false';
 
@@ -63,7 +68,8 @@ export class HomeComponent implements OnInit {
     this.DS.handletoggleChat(true);
     this.toggleSearch = true;
     this.newChat = 'false'
-    this.togleAllchat()
+    this.togleAllchat();
+
   }
   togleAllchat() {
     sessionStorage.setItem('isFavurate', 'false');
@@ -77,11 +83,32 @@ export class HomeComponent implements OnInit {
   search() {
     this.toggleSearch = false;
   }
-  newChatPoint(){
-    this.DS.currrentchatPoint.subscribe((res)=>{
-      this.newchatPoint = res;
-
+  toggleChatPoint() {
+    this.DS.currrentchatPoint.subscribe((res) => {
+      this.newchatPoint = 'false';
+      sessionStorage.setItem('newChat', 'false');
+      console.log('chat seen')
     })
   }
+  
+  newChatPoint() {
+
+    this.chatservice.newChat$.subscribe((res) => {
+      const senderId = sessionStorage.getItem('userId');
+      const receiverId = sessionStorage.getItem('FavUserId');
+      console.log(senderId, 'rec');
+      if (res && res.newChat) {
+      if (res.newChat && res.receiverId === receiverId && res.senderId == senderId) {
+        this.newchatPoint = 'true';
+        sessionStorage.setItem('newChat', 'true');
+        console.log('new chat updated');
+      }else if(sessionStorage){
+        this.newchatPoint = 'false';
+        sessionStorage.setItem('newChat', 'false');
+      }
+    }
+    })
+  }
+  
 
 }
