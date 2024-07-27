@@ -67,6 +67,7 @@ export class DataSharingService {
   }
   handlePOint(param: any) {
     this.HandlePoint.next(param);
+    console.log('datacount working')
   }
   currrentchatpoint(param: any) {
     this.chatPoint.next(param);

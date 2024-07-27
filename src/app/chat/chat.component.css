@@ -85,3 +85,21 @@
 .profileDetailsusername-l h1 {
     font-size: clamp(18px, 4vw, 23px);
 }
+.chat-mescount-l{
+    position: relative;
+    float: right;
+    background-color: rgb(89, 0, 255);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-top: 4px;
+}
+.chat-mescount-s{
+    position: relative;
+    float: right;
+    background-color: rgb(89, 0, 255);
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-top: 4px;
+}
