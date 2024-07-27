@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
       console.log('chat seen')
     })
   }
-  
+
   newChatPoint() {
 
     this.chatservice.newChat$.subscribe((res) => {
@@ -98,17 +98,20 @@ export class HomeComponent implements OnInit {
       const receiverId = sessionStorage.getItem('FavUserId');
       console.log(senderId, 'rec');
       if (res && res.newChat) {
-      if (res.newChat && res.receiverId === receiverId && res.senderId == senderId) {
-        this.newchatPoint = 'true';
-        sessionStorage.setItem('newChat', 'true');
-        console.log('new chat updated');
-      }else if(sessionStorage){
-        this.newchatPoint = 'false';
-        sessionStorage.setItem('newChat', 'false');
+        if (res.newChat && res.receiverId === receiverId && res.senderId == senderId) {
+          this.newchatPoint = 'true';
+          sessionStorage.setItem('newChat', 'true');
+          console.log('new chat updated');
+          this.DS.handlePOint(this.newchatPoint);
+          sessionStorage.setItem('chatCount', 'true')
+        } else if (sessionStorage) {
+          this.newchatPoint = 'false';
+          sessionStorage.setItem('newChat', 'false');
+          sessionStorage.setItem('chatCount', 'false');
+        }
       }
-    }
     })
   }
-  
+
 
 }

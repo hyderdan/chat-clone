@@ -18,6 +18,7 @@ import { ChatserviceService } from '../services/chatservice.service';
 })
 export class ChatComponent implements OnInit {
   username = "";
+  chatcount: any
   userProfile: any = 'false'
   toggleChat: boolean = true
   constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute,
@@ -27,12 +28,14 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     // this.handlechatDatas();
+    this.chatCount();
     this.handleChat();
     this.getUserProfile()
     this.friendLists();
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
     this.GetFavourate();
+
     this.SockectService.on('friendListUpdate', (data: any) => {
       // console.log('Friend list updated:', data);
       this.friendLists();
@@ -53,9 +56,11 @@ export class ChatComponent implements OnInit {
     sessionStorage.setItem('username', params2);
     sessionStorage.setItem('FavUserId', params3);
     sessionStorage.setItem('newChat', 'false');
+    sessionStorage.setItem('chatCount', 'false');
+    this.chatcount = 'false';
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
-    
+
   }
   handlechat(params: string, params2: string, params3: string, params4: string) {
     sessionStorage.setItem('changeUsername', params2)
@@ -144,7 +149,12 @@ export class ChatComponent implements OnInit {
 
     })
   }
-
+  chatCount() {
+    this.dataSharing.currrentHandlePoint.subscribe((res) => {
+      this.chatcount = sessionStorage.getItem('chatCount');
+      console.log(res);
+    })
+  }
 
 }
 
