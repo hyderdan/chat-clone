@@ -40,6 +40,7 @@
             </li>
         </ul>
     </div>
+    <div *ngIf="showProfile == 'profile'" class="profile-com-l"> <app-profile /> </div>
     <div *ngIf="toggleSearch == true" class="chat-com"> <app-chat /> </div>
     <div *ngIf="toggleSearch == false" class="chat-com"> <app-search /> </div>
     <div *ngIf="toggleSearch == 'true' " class="chat-com"> <app-notifications /> </div>
