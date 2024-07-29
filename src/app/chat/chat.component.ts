@@ -90,7 +90,7 @@ export class ChatComponent implements OnInit {
     const userid = sessionStorage.getItem('userId')
     this.PostData.friendList(userid).subscribe(
       res => {
-        console.log(res.friendList)
+        // console.log(res.friendList)
         this.datas = res.friendList
       }
     )
@@ -105,7 +105,7 @@ export class ChatComponent implements OnInit {
   handleChat() {
     this.dataSharing.currenthandleToggleChat.subscribe(data => {
       this.toggleChat = data;
-      console.log(data);
+      // console.log(data);
       this.GetFavourate();
     })
   }
@@ -123,7 +123,7 @@ export class ChatComponent implements OnInit {
     this.GetDatas.getDatas(userprofileId).subscribe(
       (data: any) => {
         this.userProfile = data.userdata;
-        console.log(this.userProfile)
+        // console.log(this.userProfile)
       },
       error => {
         console.log(error);
@@ -135,7 +135,7 @@ export class ChatComponent implements OnInit {
     this.GetDatas.GetFavouratesId(sessionStorage.getItem('userId')).subscribe(
       (data: any) => {
         this.FavourateDatas = data.Favourates;
-        console.log(this.FavourateDatas);
+        // console.log(this.FavourateDatas);
       }, error => {
         console.log(error);
       }
@@ -152,7 +152,7 @@ export class ChatComponent implements OnInit {
   chatCount() {
     this.dataSharing.currrentHandlePoint.subscribe((res) => {
       this.chatcount = sessionStorage.getItem('chatCount');
-      console.log(res);
+      // console.log(res);
     })
   }
 

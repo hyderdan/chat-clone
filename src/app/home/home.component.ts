@@ -10,13 +10,15 @@ import { GetdatasService } from '../services/getdatas.service';
 import { SockectservicesService } from '../services/sockectservices.service';
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { ChatserviceService } from '../services/chatservice.service';
+import { ProfileComponent } from '../profile/profile.component';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FontAwesomeModule, ChatComponent, UsersComponent, SearchComponent, NotificationsComponent, CommonModule],
+  imports: [FontAwesomeModule, ChatComponent, UsersComponent, SearchComponent, NotificationsComponent,
+   CommonModule, ProfileComponent],
   providers: [GetdatasService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -30,6 +32,7 @@ export class HomeComponent implements OnInit {
   public channel = faPeopleGroup;
   public profile = faBars;
   public bell = faBell;
+  showProfile:any = sessionStorage.getItem('show-profile')
   constructor(private DS: DataSharingService, private CallFunction: GetdatasService, private sockectService: SockectservicesService
     , private chatservice: ChatserviceService
   ) { }
@@ -76,7 +79,15 @@ export class HomeComponent implements OnInit {
     this.DS.HandleTogglefav('false')
   }
   profileShow() {
-    this.DS.handletoggleChat(false);
+    const checkProfile = sessionStorage.getItem('show-profile')
+    if(checkProfile !== 'profile'){
+      sessionStorage.setItem('show-profile','profile');
+      this.showProfile = 'profile'
+    }else{
+        sessionStorage.setItem('show-profile','closeProfile');
+      this.showProfile = 'closeProfile'
+    }
+    
     this.toggleSearch = true;
     console.log(false)
   }
