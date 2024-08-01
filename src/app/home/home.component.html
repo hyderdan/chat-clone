@@ -1,5 +1,5 @@
 <div class="home-mainDiv">
-    <div class="nav-sidebar-l">
+    <div [ngClass]="themeColor == 'white' ? 'nav-sidebar-l-light':'nav-sidebar-l' ">
         <ul class="lg:block md:block hidden">
             <li (click)="allChat()">
                 <div class="new-chaypoint" *ngIf="newchatPoint == 'true' "></div><fa-icon [icon]="chat"></fa-icon> All
@@ -14,7 +14,8 @@
             </li>
         </ul>
     </div>
-    <div class="nav-sidebar-sm">
+
+    <div [ngClass]="themeColor == 'white' ? 'nav-sidebar-sm-light':'nav-sidebar-sm' ">
         <ul class="lg:hidden md:hidden sm:block hidden">
             <li (click)="allChat()">
                 <div *ngIf="newchatPoint == 'true'  " class="new-chaypoint"></div><fa-icon [icon]="chat"></fa-icon>
@@ -27,7 +28,7 @@
             </li>
         </ul>
     </div>
-    <div class="nav-sidebar-sm">
+    <div [ngClass]="themeColor == 'white' ? 'nav-sidebar-sm-light':'nav-sidebar-sm' ">
         <ul class="lg:hidden md:hidden sm:hidden  block">
             <li (click)="allChat()">
                 <div *ngIf="newchatPoint == 'true'  " class="new-chaypoint"></div><fa-icon [icon]="chat"></fa-icon>
@@ -41,9 +42,9 @@
         </ul>
     </div>
     <div *ngIf="showProfile == 'profile'" class="profile-com-l"> <app-profile /> </div>
-    <div *ngIf="toggleSearch == true" class="chat-com"> <app-chat /> </div>
-    <div *ngIf="toggleSearch == false" class="chat-com"> <app-search /> </div>
-    <div *ngIf="toggleSearch == 'true' " class="chat-com"> <app-notifications /> </div>
+    <div *ngIf="toggleSearch == true" class="chat-com" [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-chat /> </div>
+    <div *ngIf="toggleSearch == false" [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-search /> </div>
+    <div *ngIf="toggleSearch == 'true' "  [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-notifications /> </div>
 
     <div class="chat-users"> <app-users /> </div>
 

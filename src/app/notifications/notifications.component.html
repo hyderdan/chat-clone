@@ -1,5 +1,5 @@
 <div class="not-mainDiv">
-    <div class="not-mess">
+    <div [ngClass]="themeColor == true ? 'not-mess': 'not-mess-light' ">
         <ul *ngFor="let item of username">
             <li>
                 You and {{ item }} are now friends

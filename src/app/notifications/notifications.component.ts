@@ -14,6 +14,7 @@ import { PostdatasService } from '../services/postdatas.service';
 export class NotificationsComponent implements OnInit {
 
   username: string[] = []
+  themeColor:any = sessionStorage.getItem('themeColor')
 
   constructor(private Sockectservice: SockectservicesService, private dataSharing: DataSharingService, private postdatas: PostdatasService) { }
 

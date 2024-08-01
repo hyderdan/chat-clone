@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faUser, faComment, faPeopleGroup, faBars, faLeaf, faBell } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faComment, faPeopleGroup, faBars, faLeaf, faBell, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { DataSharingService } from '../services/data-sharing.service';
 import { ChatComponent } from '../chat/chat.component';
 import { UsersComponent } from '../chat/users/users.component';
@@ -18,13 +18,14 @@ import { ProfileComponent } from '../profile/profile.component';
   selector: 'app-home',
   standalone: true,
   imports: [FontAwesomeModule, ChatComponent, UsersComponent, SearchComponent, NotificationsComponent,
-   CommonModule, ProfileComponent],
+    CommonModule, ProfileComponent],
   providers: [GetdatasService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   newChat: any;
+  themeColor:any = sessionStorage.getItem('themeColor')
   newchatPoint: any = sessionStorage.getItem('newChat')
   toggleSearch: any = true;
   public faUser = faUser
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
   public channel = faPeopleGroup;
   public profile = faBars;
   public bell = faBell;
-  showProfile:any = sessionStorage.getItem('show-profile')
+  showProfile: any = sessionStorage.getItem('show-profile')
   constructor(private DS: DataSharingService, private CallFunction: GetdatasService, private sockectService: SockectservicesService
     , private chatservice: ChatserviceService
   ) { }
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
     });
     this.newChatPoint();
     this.toggleChatPoint();
-
+    this.closeProfile()
   }
   handlenotification() {
     this.toggleSearch = 'true'
@@ -80,14 +81,11 @@ export class HomeComponent implements OnInit {
   }
   profileShow() {
     const checkProfile = sessionStorage.getItem('show-profile')
-    if(checkProfile !== 'profile'){
-      sessionStorage.setItem('show-profile','profile');
+    if (checkProfile == 'closeProfile') {
+      sessionStorage.setItem('show-profile', 'profile');
       this.showProfile = 'profile'
-    }else{
-        sessionStorage.setItem('show-profile','closeProfile');
-      this.showProfile = 'closeProfile'
-    }
-    
+    } 
+
     this.toggleSearch = true;
     console.log(false)
   }
@@ -122,7 +120,17 @@ export class HomeComponent implements OnInit {
         }
       }
     })
-  }
+  };
+  closeProfile() {
+    const checkProfile = sessionStorage.getItem('show-profile');
+
+    if (checkProfile == 'profile' ) {
+      this.DS.currrentcloseProfile.subscribe((res) => {
+      sessionStorage.setItem('show-profile', 'closeProfile');
+      this.showProfile = res;
+    })
+    } ;
+  };
 
 
 }

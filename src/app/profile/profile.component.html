@@ -1,13 +1,15 @@
 <div class="profile-main">
     <div class="profile-sub1">
         <ul>
-            <li>General</li>
+            <li (click)="handleProfileoption()" [ngClass]="hadleProfileOptions == true ? 'generalChange':'' ">Generals
+            </li>
             <li>Account</li>
-            <li>Theme</li>
+            <li (click)="handleProfileoption()" [ngClass]="hadleProfileOptions == false ? 'generalChange':'' ">Theme
+            </li>
         </ul>
     </div>
 
-    <div class="profile-sub2">
+    <div *ngIf="hadleProfileOptions == true " class="profile-sub2">
         <div class="active-sign"></div>
         <div class="user-info">
             <h1>{{userProfile.username}}</h1>
@@ -15,9 +17,31 @@
             <h2>+91 {{userProfile.phoneNo}}</h2>
         </div>
 
-    <div class="logout-button">
-        <button (click)="logOut()">Log out</button>
+        <div class="logout-button">
+            <button (click)="logOut()">Log out</button>
+        </div>
     </div>
+    <div *ngIf="hadleProfileOptions == false " class="profile-sub2">
+        <div class="themes">
+            <h1>THEME</h1>
+        </div>
+        <div class="themeOption">
+            <ul>
+                <li>
+                    <div class="dark-theme"></div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dark
+                </li>
+                <li (click)="handleThemeColor()">
+                    <div class="light-theme"></div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Light
+                </li>
+            </ul>
+        </div>
+
 
     </div>
+    <div class="close-profile">
+        <button (click)="handleClose()"><fa-icon [icon]="xmark"></fa-icon></button>
+    </div>
+
+
+
 </div>

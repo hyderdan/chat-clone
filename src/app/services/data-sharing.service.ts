@@ -38,6 +38,9 @@ export class DataSharingService {
   private chatPoint = new BehaviorSubject<any>('');
   currrentchatPoint = this.chatPoint.asObservable();
 
+  private closeProfile = new BehaviorSubject<any>('');
+  currrentcloseProfile = this.closeProfile.asObservable();
+
 
 
   changeUsername(username: string) {
@@ -67,11 +70,15 @@ export class DataSharingService {
   }
   handlePOint(param: any) {
     this.HandlePoint.next(param);
-    console.log('datacount working')
+    // console.log('datacount working')
   }
   currrentchatpoint(param: any) {
     this.chatPoint.next(param);
-    console.log(param,'hy')
   };
+  closeprofile(param:any){
+    this.closeProfile.next(param);
+    console.log(param,'hy')
+
+  }
 
 }
