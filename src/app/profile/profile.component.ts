@@ -2,19 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { GetdatasService } from '../services/getdatas.service';
 import { RouteGuardService } from '../services/route-guard.service';
 import { Router } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faXmark} from '@fortawesome/free-solid-svg-icons';
+import { CommonModule } from '@angular/common';
+import { DataSharingService } from '../services/data-sharing.service';
+
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit {
 
   userProfile: any
-
-  constructor(private GetDatas: GetdatasService, private checkLogout: RouteGuardService, private route: Router) { }
+   xmark = faXmark;
+   hadleProfileOptions:any = true;
+  constructor(private GetDatas: GetdatasService, private datasharing:DataSharingService,private checkLogout: RouteGuardService, private route: Router) { }
 
   ngOnInit(): void {
     this.getUserProfile();
@@ -39,5 +45,20 @@ export class ProfileComponent implements OnInit {
     // sessionStorage.removeItem('userId');
     // sessionStorage.removeItem('isAuthenticated')
     this.route.navigate(['login']);
+  };
+
+  handleClose(){
+    // sessionStorage.setItem('show-profile','closeProfile');
+    this.datasharing.closeprofile('closeProfile');
+  };
+  handleProfileoption(){
+    if(this.hadleProfileOptions == false){
+      this.hadleProfileOptions = true
+    }else{
+      this.hadleProfileOptions = false
+    }
+  };
+  handleThemeColor(){
+    sessionStorage.setItem('themeColor', 'white')
   }
 }

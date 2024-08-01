@@ -33,6 +33,32 @@
     color: orangered;
 }
 
+.nav-sidebar-l-light{
+    width: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    place-items: center;
+    background-color: whitesmoke;
+    color: black;
+}
+.nav-sidebar-l-light ul {
+    /* background-color: red; */
+    margin-top: 20px;
+    padding: 40px 20px 40px 20px;
+}
+
+.nav-sidebar-l-light li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.nav-sidebar-l-light li:hover {
+    color: orangered;
+}
+
+
 /* nav-bar sm starts*/
 .nav-sidebar-sm {
     width: auto;
@@ -62,15 +88,48 @@
 .nav-sidebar-sm li:hover {
     color: orangered;
 }
+.nav-sidebar-sm-light{
+    width: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    place-items: center;
+    background-color: whitesmoke;
+    color: black;
+}
+.nav-sidebar-sm-light ul {
+    /* background-color: red; */
+    margin-top: 20px;
+    padding: 40px 20px 40px 20px;
+}
+
+.nav-sidebar-sm-light li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.nav-sidebar-sm-light li:hover {
+    color: orangered;
+}
 
 /* nav-bar sm ends*/
 
 .chat-com {
     width: 50%;
+    background-color: rgb(3, 3, 20);
+    color: white;
+
+}
+.chat-com-light{
+    width: 50%;
+    background-color: white;
+    color: black;
 }
 
 .chat-users {
     width: 43%;
+    background-color: rgb(3, 3, 17);
 }
 
 @media(width<800px) {
@@ -96,10 +155,10 @@
     flex-direction: column;
     justify-content: top;
     place-items: center; */
-    width: 45%;
+    width: 35%;
     height: 500px;
     margin-top: 220px;
-    margin-left: 80px;
+    margin-left: 10px;
     border-radius: 10px;
     background-color: rgb(5, 5, 34);
     color: white;

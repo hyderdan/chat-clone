@@ -20,7 +20,9 @@ export class ChatComponent implements OnInit {
   username = "";
   chatcount: any
   userProfile: any = 'false'
-  toggleChat: boolean = true
+  toggleChat: boolean = true;
+  themeColor:any = sessionStorage.getItem('themeColor')
+
   constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute,
     private checkLogout: RouteGuardService, private GetDatas: GetdatasService,
     private PostData: PostdatasService, private SockectService: SockectservicesService,
