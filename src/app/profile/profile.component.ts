@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
   userProfile: any
    xmark = faXmark;
    hadleProfileOptions:any = true;
+   themeColor = sessionStorage.getItem('themeColor');
   constructor(private GetDatas: GetdatasService, private datasharing:DataSharingService,private checkLogout: RouteGuardService, private route: Router) { }
 
   ngOnInit(): void {
