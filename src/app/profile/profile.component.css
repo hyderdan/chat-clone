@@ -11,10 +11,9 @@
     width: 40%;
     border-right: 0.2px solid rgb(3, 3, 61);
 }
-
 .profile-sub1 ul {
     height: 100%;
-    
+
 }
 
 .profile-sub1 li {
@@ -28,9 +27,76 @@
 
 
 }
+.profile-sub1-light {
+    height: 100%;
+    width: 40%;
+    border-right: 0.2px solid rgb(175, 175, 177);
+}
+.profile-sub1-light ul {
+    height: 100%;
+
+}
+
+.profile-sub1-light li {
+    padding-left: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: 0.3s ease-in-out;
+    /* border-radius: 8px; */
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.profile-sub1-sm {
+    height: 100%;
+    width: 40%;
+    border-right: 0.2px solid rgb(3, 3, 61);
+}
+
+
+.profile-sub1-sm ul {
+    height: 100%;
+
+}
+
+.profile-sub1-sm li {
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+    transition: 0.3s ease-in-out;
+    /* border-radius: 8px; */
+
+}
+.profile-sub1-sm-light {
+    height: 100%;
+    width: 40%;
+    border-right: 0.2px solid rgb(3, 3, 61);
+}
+
+
+.profile-sub1-sm-light ul {
+    height: 100%;
+
+}
+
+.profile-sub1-sm-light li {
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+    transition: 0.3s ease-in-out;
+    /* border-radius: 8px; */
+
+}
+
+
 /* { id */
-.generalChange{
-    background-color:  rgb(7, 7, 83);
+.generalChange {
+    background-color: rgb(7, 7, 83);
+}
+.generalChange-light{
+    background-color: rgb(171, 201, 253);
+ 
 }
 
 
@@ -40,13 +106,26 @@
     background-color: rgb(7, 7, 83);
 
 }
+.profile-sub1-light li:hover {
+    background-color: rgb(171, 201, 253);
+
+}
+
+.profile-sub1-sm li:hover {
+    background-color: rgb(7, 7, 83);
+
+}
+.profile-sub1-sm-light li:hover {
+    background-color: rgb(171, 201, 253);
+
+}
 
 .profile-sub2 {
     width: 80%;
     /* background-color:  rgb(2, 2, 45); */
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .active-sign {
@@ -88,47 +167,53 @@
     height: auto;
 
 }
-.logout-button button{
+
+.logout-button button {
     background-color: darkgray;
     padding: 5px 5px 5px 5px;
     border-radius: 7px;
     transition: 0.3s ease-in-out;
 }
-.logout-button button:hover{
+
+.logout-button button:hover {
     background-color: antiquewhite;
     color: black;
 }
-.close-profile{
+
+#close-profile {
     /* background-color: red; */
-    height: 10%;
-    width: 10%;
-    padding-left: 15px; 
-    padding-top: 5px;
+    margin-top: 470px;
+    padding-left: 40px;
 }
-.themes{
+
+.themes {
     /* background-color: red; */
     height: 50px;
     display: flex;
     justify-content: center;
     place-items: center;
 }
-.themes h1{
+
+.themes h1 {
     font-size: 20px;
     font-weight: 500;
 }
-.themeOption{
+
+.themeOption {
     /* background-color: rgb(0, 255, 17); */
     height: 100%;
     display: flex;
     flex-direction: row;
     margin-top: 50px;
 }
-.themeOption ul{
+
+.themeOption ul {
     display: flex;
     flex-direction: row;
-    
+
 }
-.themeOption li{
+
+.themeOption li {
     /* background-color: rgb(76, 0, 255); */
     margin-left: 20px;
     padding-right: 30px;
@@ -137,19 +222,53 @@
     border-radius: 8px;
 
 }
-.dark-theme{
+
+.dark-theme {
     width: 50px;
     height: 50px;
-    background-color: rgb(3, 3, 61);;
+    background-color: rgb(3, 3, 61);
+    ;
     border-radius: 10%;
     margin-top: 30px;
     margin-left: 30px;
 }
-.light-theme{
+
+.light-theme {
     width: 50px;
     height: 50px;
     background-color: whitesmoke;
     border-radius: 10%;
     margin-top: 30px;
     margin-left: 30px;
+}
+
+@media(width<473px) {
+    .themeOption {
+        /* background-color: rgb(0, 255, 17); */
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+    }
+    
+    .themeOption ul {
+        display: flex;
+        justify-content: center;
+        place-items: center;
+        flex-direction: column;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    
+    .themeOption li {
+        /* background-color: rgb(76, 0, 255); */
+        margin-top: 20px;
+        margin-bottom: 20px;
+        height: 120px; 
+        border: 0.2px solid rgb(3, 3, 61);
+        border-radius: 8px;
+    
+    }
+    
 }

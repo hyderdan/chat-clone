@@ -35,14 +35,17 @@
             </li>
             <li (click)="handleFilter()"><fa-icon [icon]="faUser"></fa-icon></li>
             <li (click)="search()"><fa-icon [icon]="channel"></fa-icon></li>
-            <li (click)="profileShow()"><fa-icon [icon]="profile"></fa-icon></li>
+            <li (click)="profileShowsm()"><fa-icon [icon]="profile"></fa-icon></li>
             <li (click)="handlenotification()">
                 <div class="new-chaypoint" *ngIf="newChat == 'true' "></div> <fa-icon [icon]="bell"></fa-icon>
             </li>
         </ul>
     </div>
-    <div *ngIf="showProfile == 'profile'" class="profile-com-l"> <app-profile /> </div>
-    <div *ngIf="toggleSearch == true" class="chat-com" [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-chat /> </div>
+    <div *ngIf="showProfile == 'profile'" [ngClass]="themeColor == 'white' ? 'profile-com-l-light lg:block md:block sm:hidden hidden':'profile-com-l lg:block md:block sm:hidden hidden' " class=""> <app-profile /> </div>
+
+    <div *ngIf="toggleSearch == 'profile'"  [ngClass]="themeColor == 'white' ? 'chat-com-light lg:hidden md:hidden sm:block block':'chat-com lg:hidden md:hidden sm:block block'"> <app-profile /> </div>
+   <div *ngIf="toggleSearch == true"  [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-chat /> </div>
+
     <div *ngIf="toggleSearch == false" [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-search /> </div>
     <div *ngIf="toggleSearch == 'true' "  [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-notifications /> </div>
 

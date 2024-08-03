@@ -33,7 +33,7 @@
     color: orangered;
 }
 
-.nav-sidebar-l-light{
+.nav-sidebar-l-light {
     width: auto;
     height: 100vh;
     display: flex;
@@ -43,6 +43,7 @@
     background-color: whitesmoke;
     color: black;
 }
+
 .nav-sidebar-l-light ul {
     /* background-color: red; */
     margin-top: 20px;
@@ -88,7 +89,8 @@
 .nav-sidebar-sm li:hover {
     color: orangered;
 }
-.nav-sidebar-sm-light{
+
+.nav-sidebar-sm-light {
     width: auto;
     height: 100vh;
     display: flex;
@@ -98,6 +100,7 @@
     background-color: whitesmoke;
     color: black;
 }
+
 .nav-sidebar-sm-light ul {
     /* background-color: red; */
     margin-top: 20px;
@@ -121,7 +124,8 @@
     color: white;
 
 }
-.chat-com-light{
+
+.chat-com-light {
     width: 50%;
     background-color: white;
     color: black;
@@ -140,6 +144,11 @@
     .chat-com {
         width: 100%;
     }
+
+    .chat-com-light {
+        width: 100%;
+
+    }
 }
 
 .new-chaypoint {
@@ -149,17 +158,39 @@
     width: 10px;
     height: 10px;
 }
-.profile-com-l{
+
+.profile-com-l {
     position: absolute;
     /* display: flex;
     flex-direction: column;
     justify-content: top;
     place-items: center; */
-    width: 35%;
+    width: 50%;
     height: 500px;
     margin-top: 220px;
     margin-left: 10px;
     border-radius: 10px;
     background-color: rgb(5, 5, 34);
     color: white;
+}
+
+.profile-com-l-light {
+    position: absolute;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: top;
+    place-items: center; */
+    width: 50%;
+    height: 500px;
+    margin-top: 220px;
+    margin-left: 10px;
+    border-radius: 10px;
+    background-color: rgb(225, 225, 225);
+    color: black;
+}
+
+@media(width<1120px) {
+    .profile-com-l-light {
+        width: 60%;
+    }
 }

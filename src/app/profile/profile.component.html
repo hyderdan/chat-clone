@@ -1,11 +1,22 @@
 <div class="profile-main">
-    <div class="profile-sub1">
+    <div [ngClass]="themeColor == 'white' ? 'profile-sub1-light lg:block md:block sm:hidden hidden': 'profile-sub1 lg:block md:block sm:hidden hidden' ">
+        <ul>
+            <li (click)="handleProfileoption()" [ngClass]="hadleProfileOptions == true ? 'generalChange-light':'' ">Generals
+            </li>
+            <li>Account</li>
+            <li (click)="handleProfileoption()" [ngClass]="hadleProfileOptions == false ? 'generalChange-light':'' ">Theme
+            </li>
+            <li (click)="handleClose()" >close Profile</li>
+        </ul>
+    </div>
+    <div [ngClass]="themeColor == 'white' ? 'profile-sub1-sm-light lg:hidden md:hidden sm:block block': 'profile-sub1-sm lg:hidden md:hidden sm:block block' " >
         <ul>
             <li (click)="handleProfileoption()" [ngClass]="hadleProfileOptions == true ? 'generalChange':'' ">Generals
             </li>
             <li>Account</li>
             <li (click)="handleProfileoption()" [ngClass]="hadleProfileOptions == false ? 'generalChange':'' ">Theme
             </li>
+            <li (click)="handleClose()" id="close-profile">close</li>
         </ul>
     </div>
 
@@ -35,13 +46,9 @@
                 </li>
             </ul>
         </div>
-
-
+        
     </div>
-    <div class="close-profile">
-        <button (click)="handleClose()"><fa-icon [icon]="xmark"></fa-icon></button>
-    </div>
-
+    
 
 
 </div>

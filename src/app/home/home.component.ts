@@ -81,13 +81,19 @@ export class HomeComponent implements OnInit {
   }
   profileShow() {
     const checkProfile = sessionStorage.getItem('show-profile')
-    if (checkProfile == 'closeProfile') {
+    // if (checkProfile == 'closeProfile') {
       sessionStorage.setItem('show-profile', 'profile');
       this.showProfile = 'profile'
-    } 
+    // } 
 
-    this.toggleSearch = true;
     console.log(false)
+  }
+  profileShowsm(){
+    if(this.toggleSearch == 'profile'){
+      this.toggleSearch = true;
+    }else{
+      this.toggleSearch = 'profile'
+    }
   }
   search() {
     this.toggleSearch = false;
