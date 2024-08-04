@@ -1,21 +1,49 @@
 <div class="profile-main">
-    <div [ngClass]="themeColor == 'white' ? 'profile-sub1-light lg:block md:block sm:hidden hidden': 'profile-sub1 lg:block md:block sm:hidden hidden' ">
+    <div
+        [ngClass]="themeColor == 'white' ? 'profile-sub1-light lg:block md:block sm:hidden hidden': 'profile-sub1 lg:block md:block sm:hidden hidden' ">
         <ul>
-            <li (click)="handleProfileoption()" [ngClass]="hadleProfileOptions == true ? 'generalChange-light':'' ">Generals
+            <li *ngIf="themeColor == 'white'" (click)="handleProfileoption()"
+                [ngClass]="hadleProfileOptions == true && themeColor == 'white' ? 'generalChange-light': '' ">
+                Generals
+            </li>
+            <li *ngIf="themeColor !== 'white' " (click)="handleProfileoption()"
+                [ngClass]="hadleProfileOptions == true  ? 'generalChange':'' ">
+                Generals
             </li>
             <li>Account</li>
-            <li (click)="handleProfileoption()" [ngClass]="hadleProfileOptions == false ? 'generalChange-light':'' ">Theme
+            <li *ngIf="themeColor == 'white' " (click)="handleProfileoption()"
+                [ngClass]="hadleProfileOptions == false && themeColor == 'white' ? 'generalChange-light':'' ">
+                Theme
             </li>
-            <li (click)="handleClose()" >close Profile</li>
+            <li *ngIf="themeColor !== 'white' " (click)="handleProfileoption()"
+                [ngClass]="hadleProfileOptions == false  ? 'generalChange':'' ">
+                Theme
+            </li>
+
+            <li (click)="handleClose()">close Profile</li>
         </ul>
     </div>
-    <div [ngClass]="themeColor == 'white' ? 'profile-sub1-sm-light lg:hidden md:hidden sm:block block': 'profile-sub1-sm lg:hidden md:hidden sm:block block' " >
+    <div
+        [ngClass]="themeColor == 'white' ? 'profile-sub1-sm-light lg:hidden md:hidden sm:block block': 'profile-sub1-sm lg:hidden md:hidden sm:block block' ">
         <ul>
-            <li (click)="handleProfileoption()" [ngClass]="hadleProfileOptions == true ? 'generalChange':'' ">Generals
+            <li *ngIf="themeColor == 'white'" (click)="handleProfileoption()"
+                [ngClass]="hadleProfileOptions == true && themeColor == 'white' ? 'generalChange-light': '' ">
+                Generals
+            </li>
+            <li *ngIf="themeColor !== 'white' " (click)="handleProfileoption()"
+                [ngClass]="hadleProfileOptions == true  ? 'generalChange':'' ">
+                Generals
             </li>
             <li>Account</li>
-            <li (click)="handleProfileoption()" [ngClass]="hadleProfileOptions == false ? 'generalChange':'' ">Theme
+            <li *ngIf="themeColor == 'white' " (click)="handleProfileoption()"
+                [ngClass]="hadleProfileOptions == false && themeColor == 'white' ? 'generalChange-light':'' ">
+                Theme
             </li>
+            <li *ngIf="themeColor !== 'white' " (click)="handleProfileoption()"
+                [ngClass]="hadleProfileOptions == false  ? 'generalChange':'' ">
+                Theme
+            </li>
+
             <li (click)="handleClose()" id="close-profile">close</li>
         </ul>
     </div>
@@ -46,9 +74,9 @@
                 </li>
             </ul>
         </div>
-        
+
     </div>
-    
+
 
 
 </div>

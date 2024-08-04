@@ -1,6 +1,6 @@
 <div class="user-main">
     <div *ngIf="checkGoBack == 'true' ">
-        <nav class="user-nav-xl">
+        <nav  [ngClass]="themeColor == 'white' ? 'user-nav-xl-light':'user-nav-xl' ">
             <button (click)="goBAck('/home')"><fa-icon [icon]="faarrowleft"></fa-icon></button>
             <h1>{{getValues}}</h1>
             <ul>
@@ -27,7 +27,7 @@
                 <p><strong>{{message.sender}}</strong> {{message.message}}</p>
             </div>
         </div>
-        <div class="user-chat-type">
+        <div  [ngClass]="themeColor == 'white' ? 'user-chat-type-light' : 'user-chat-type' " >
             <input type="text" [(ngModel)]="message">
             <button (click)="sendMessage()"><fa-icon [icon]="faPlane"></fa-icon></button>
         </div>

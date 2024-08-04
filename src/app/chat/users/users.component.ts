@@ -27,7 +27,8 @@ export class UsersComponent implements OnInit, AfterViewChecked {
   ) { };
   @ViewChild('chatContainer') private chatContainer!: ElementRef;
   getValues = "";
-  GetUserId = ""
+  GetUserId = "";
+  themeColor: any = sessionStorage.getItem('themeColor');
   ToggleStar = true
   HandleToggleStar: any = [];
   FavourateDatas: any;

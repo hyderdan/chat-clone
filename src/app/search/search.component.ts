@@ -17,6 +17,7 @@ import { SockectservicesService } from '../services/sockectservices.service';
 })
 export class SearchComponent implements OnInit {
   toggleloader = true;
+  themeColor: any = sessionStorage.getItem('themeColor');
   addUser = faUserPlus;
   removeFreind = faLock
   searachInput: string = ""
@@ -38,9 +39,9 @@ export class SearchComponent implements OnInit {
     this.friendLists();
 
   }
-  handleNewChatpoint(data:any){
+  handleNewChatpoint(data: any) {
     this.DS.handlePOint(data.newChat)
-    sessionStorage.setItem('new-chat',data.newChat)
+    sessionStorage.setItem('new-chat', data.newChat)
   }
   handleSearch() {
     this.toggleloader = false
