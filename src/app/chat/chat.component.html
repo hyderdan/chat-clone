@@ -1,6 +1,7 @@
 <div class=" chats ">
     <div *ngIf="toggleChat == true">
-        <div *ngIf="toggleFIlter == 'false'" [ngClass]="themeColor !== 'white'?'chat-users-l lg:block  md:block sm:hidden hidden': 'chat-users-l-light lg:block  md:block sm:hidden hidden' ">
+        <div *ngIf="toggleFIlter == 'false'"
+            [ngClass]="themeColor !== 'white'?'chat-users-l lg:block  md:block sm:hidden hidden': 'chat-users-l-light lg:block  md:block sm:hidden hidden' ">
 
             <ul>
                 <li *ngFor="let item of datas" (click)="handleusername(item.username, 'true', item._id)">
@@ -9,7 +10,8 @@
                 </li>
             </ul>
         </div>
-        <div *ngIf="toggleFIlter == 'true'" [ngClass]="themeColor !== 'white'?'chat-users-l lg:block  md:block sm:hidden hidden': 'chat-users-l-light lg:block  md:block sm:hidden hidden' ">
+        <div *ngIf="toggleFIlter == 'true'"
+            [ngClass]="themeColor !== 'white'?'chat-users-l lg:block  md:block sm:hidden hidden': 'chat-users-l-light lg:block  md:block sm:hidden hidden' ">
 
             <ul>
                 <li *ngFor="let item of FavourateDatas" (click)="handleusername(item.username, 'true', item._id)">
@@ -18,7 +20,8 @@
             </ul>
         </div>
 
-        <div *ngIf="toggleFIlter == 'false'" [ngClass]="themeColor !== 'white'?'chat-users-l lg:hidden  md:hidden sm:block block': 'chat-users-l-light lg:hidden  md:hidden sm:block block' ">
+        <div *ngIf="toggleFIlter == 'false'"
+            [ngClass]="themeColor !== 'white'?'chat-users-l lg:hidden  md:hidden sm:block block': 'chat-users-l-light lg:hidden  md:hidden sm:block block' ">
             <ul>
                 <li *ngFor="let item of datas" (click)="handlechat('chat/user', item.username, 'true', item._id)">
                     <div class="chat-profilePic-l"></div>{{item.username}}
@@ -26,10 +29,12 @@
                 </li>
             </ul>
         </div>
-        <div *ngIf="toggleFIlter == 'true'" [ngClass]="themeColor !== 'white'?'chat-users-l lg:hidden  md:hidden sm:block block': 'chat-users-l-light lg:hidden  md:hidden sm:block block' ">
+        <div *ngIf="toggleFIlter == 'true'"
+            [ngClass]="themeColor !== 'white'?'chat-users-l lg:hidden  md:hidden sm:block block': 'chat-users-l-light lg:hidden  md:hidden sm:block block' ">
 
             <ul>
-                <li *ngFor="let item of FavourateDatas" (click)="handlechat('chat/user', item.username, 'true', item._id)">
+                <li *ngFor="let item of FavourateDatas"
+                    (click)="handlechat('chat/user', item.username, 'true', item._id)">
                     <div class="chat-profilePic-l"></div>{{item.username}}
                 </li>
             </ul>

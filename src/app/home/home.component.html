@@ -41,15 +41,24 @@
             </li>
         </ul>
     </div>
-    <div *ngIf="showProfile == 'profile'" [ngClass]="themeColor == 'white' ? 'profile-com-l-light lg:block md:block sm:hidden hidden':'profile-com-l lg:block md:block sm:hidden hidden' " class=""> <app-profile /> </div>
+    <div *ngIf="showProfile == 'profile'"
+        [ngClass]="themeColor == 'white' ? 'profile-com-l-light lg:block md:block sm:hidden hidden':'profile-com-l lg:block md:block sm:hidden hidden' "
+        class=""> <app-profile /> </div>
 
-    <div *ngIf="toggleSearch == 'profile'"  [ngClass]="themeColor == 'white' ? 'chat-com-light lg:hidden md:hidden sm:block block':'chat-com lg:hidden md:hidden sm:block block'"> <app-profile /> </div>
-   <div *ngIf="toggleSearch == true"  [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-chat /> </div>
+    <div *ngIf="toggleSearch == 'profile'"
+        [ngClass]="themeColor == 'white' ? 'chat-com-light lg:hidden md:hidden sm:block block':'chat-com lg:hidden md:hidden sm:block block'">
+        <app-profile />
+    </div>
+    <div *ngIf="toggleSearch == true" [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-chat />
+    </div>
 
-    <div *ngIf="toggleSearch == false" [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-search /> </div>
-    <div *ngIf="toggleSearch == 'true' "  [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-notifications /> </div>
+    <div *ngIf="toggleSearch == false" [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' "> <app-search />
+    </div>
+    <div *ngIf="toggleSearch == 'true' " [ngClass]="themeColor == 'white' ? 'chat-com-light':'chat-com' ">
+        <app-notifications />
+    </div>
 
-    <div class="chat-users"> <app-users /> </div>
+    <div  [ngClass]="themeColor == 'white' ? 'chat-users-light':'chat-users' "> <app-users /> </div>
 
 
 

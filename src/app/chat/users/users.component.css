@@ -1,7 +1,6 @@
 .user-main {
     height: 100vh;
-    color: white;
-    
+
 }
 
 .user-nav-xl {
@@ -11,6 +10,7 @@
     justify-content: space-between;
     padding: 20px 20px 14px 20px;
     background-color: rgb(3, 3, 20);
+    color: white;
 
 
 }
@@ -32,9 +32,35 @@
     padding-right: 10px;
 }
 
+.user-nav-xl-light {
+    border-bottom: 0.2px solid rgb(221, 221, 224);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 20px 14px 20px;
+    background-color: white
+}
+
+.user-nav-xl-light h1 {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.user-nav-xl-light ul {
+    /* background-color: red; */
+    display: flex;
+
+
+}
+
+.user-nav-xl-light li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .user-chat-show-l {
     /* background-color: red; */
-    height: 610px;
+    height: 613.6px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -64,20 +90,20 @@
 }
 
 .sender {
-    background-color: #3612d5;
+    background-color: #a998f6;
     /* Light red for receiver */
     padding: 10px;
     border-radius: 10px;
-    margin: 5px 0;
+    margin: 10px 10px;
     align-self: flex-end;
 }
 
 .receiver {
-    background-color: #930a15;
+    background-color: #f3e3e4;
     /* Light red for receiver */
     padding: 10px;
     border-radius: 10px;
-    margin: 5px 0;
+    margin: 10px 10px;
     align-self: flex-start;
 }
 
@@ -120,36 +146,42 @@
     border: none;
 }
 
+
+
+.user-chat-type-light {
+    /* background-color: red; */
+    height: 50px;
+    display: flex;
+}
+
+.user-chat-type-light input {
+    width: 90%;
+    height: 100%;
+    /* background-color: rgb(3, 3, 20); */
+    border-top: 0.2px solid rgb(3, 3, 61);
+    background-color:white;
+    border: none;
+
+}
+
+.user-chat-type-light input:focus {
+    outline: none;
+}
+
+.user-chat-type-light button {
+    background-color: white;
+    width: 10%;
+    border: none;
+}
+
+
+
 .user-chat-show-l li {
     margin-bottom: 20px;
     margin-left: 30px;
 
 }
 
-.chatSend {
-    background-color: red;
-    width: 50%;
-    height: auto;
-    border-radius: 20px;
-}
-
-.chatReceived {
-    background-color: blue;
-    width: 50%;
-    height: auto;
-    border-radius: 20px;
-    margin-left: 220px;
-
-}
-
-.chatReceived h1 {
-    position: relative;
-    padding: 10px 10px 10px 10px;
-    margin-left: 20px;
-    text-align: left;
-    color: white;
-
-}
 
 .ToggleFavourates {
     color: gold;
@@ -158,10 +190,12 @@
 ToggleFavourates2 {
     color: blue;
 }
-.menu-bar{
+
+.menu-bar {
     display: none;
 }
-.menu-bar ul{
+
+.menu-bar ul {
     position: absolute;
     background-color: rgb(14, 9, 26);
     display: flex;
@@ -170,6 +204,7 @@ ToggleFavourates2 {
     padding-top: 5px;
     padding-bottom: 5px;
 }
-.ClickM:hover .menu-bar{
+
+.ClickM:hover .menu-bar {
     display: block;
 }
