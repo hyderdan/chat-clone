@@ -33,13 +33,9 @@ export class RouteGuardService {
   }
 
   private loadLoginCheck(): void {
-    if (isPlatformBrowser(this.platformId)) {
+   
       const loginCheck = sessionStorage.getItem('isAuthenticated');
       this.isAuthenticated = loginCheck === 'true';
-    } else {
-      this.isAuthenticated = false; // Default value when not in a browser environment
-    }
-
   }
 
 }

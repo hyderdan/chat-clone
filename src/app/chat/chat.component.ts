@@ -7,6 +7,7 @@ import { GetdatasService } from '../services/getdatas.service';
 import { PostdatasService } from '../services/postdatas.service';
 import { SockectservicesService } from '../services/sockectservices.service';
 import { ChatserviceService } from '../services/chatservice.service';
+import { ThemechangeService } from '../services/themechange.service';
 
 @Component({
   selector: 'app-chat',
@@ -21,12 +22,12 @@ export class ChatComponent implements OnInit {
   chatcount: any
   userProfile: any = 'false'
   toggleChat: boolean = true;
-  themeColor:any = sessionStorage.getItem('themeColor');
+  themeColor: any = sessionStorage.getItem('themeColor');
 
   constructor(private dataSharing: DataSharingService, private route: Router, private router: ActivatedRoute,
     private checkLogout: RouteGuardService, private GetDatas: GetdatasService,
     private PostData: PostdatasService, private SockectService: SockectservicesService,
-    private chatservice: ChatserviceService) { }
+    private chatservice: ChatserviceService, private themechange: ThemechangeService) { }
 
   ngOnInit(): void {
     // this.handlechatDatas();
@@ -37,6 +38,7 @@ export class ChatComponent implements OnInit {
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
     this.GetFavourate();
+    this.handleThemeColor();
 
     this.SockectService.on('friendListUpdate', (data: any) => {
       // console.log('Friend list updated:', data);
@@ -44,6 +46,13 @@ export class ChatComponent implements OnInit {
       this.handleNewChatpoint(data);
     });
   }
+
+  handleThemeColor() {
+    this.themechange.currentThemeChange.subscribe((res) => {
+      this.themeColor = sessionStorage.getItem('themeColor')
+    })
+  }
+
   handleNewChatpoint(data: any) {
     this.dataSharing.handlePOint(data.newChat)
     sessionStorage.setItem('new-chat', data.newChat)
@@ -62,6 +71,7 @@ export class ChatComponent implements OnInit {
     this.chatcount = 'false';
     this.ToggleShowProfile();
     this.ToggleChangeUserName();
+    window.location.reload()
 
   }
   handlechat(params: string, params2: string, params3: string, params4: string) {

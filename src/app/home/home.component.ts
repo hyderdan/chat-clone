@@ -11,6 +11,7 @@ import { SockectservicesService } from '../services/sockectservices.service';
 import { NotificationsComponent } from '../notifications/notifications.component';
 import { ChatserviceService } from '../services/chatservice.service';
 import { ProfileComponent } from '../profile/profile.component';
+import { ThemechangeService } from '../services/themechange.service';
 
 
 
@@ -25,7 +26,7 @@ import { ProfileComponent } from '../profile/profile.component';
 })
 export class HomeComponent implements OnInit {
   newChat: any;
-  themeColor:any = sessionStorage.getItem('themeColor')
+  themeColor: any = sessionStorage.getItem('themeColor')
   newchatPoint: any = sessionStorage.getItem('newChat')
   toggleSearch: any = true;
   public faUser = faUser
@@ -35,29 +36,28 @@ export class HomeComponent implements OnInit {
   public bell = faBell;
   showProfile: any = sessionStorage.getItem('show-profile')
   constructor(private DS: DataSharingService, private CallFunction: GetdatasService, private sockectService: SockectservicesService
-    , private chatservice: ChatserviceService
+    , private chatservice: ChatserviceService, private themechange: ThemechangeService
   ) { }
   ngOnInit(): void {
-    // this.handleNewChatPoint();
     this.sockectService.on('friendListUpdate', (data: any) => {
-      // console.log('Friend list updated:', data);
       this.newChat = data.newChat
     });
     this.newChatPoint();
     this.toggleChatPoint();
     this.closeProfile()
+    this.handleThemeColor();
+  };
+  handleThemeColor() {
+    this.themechange.currentThemeChange.subscribe((res) => {
+     this.themeColor = sessionStorage.getItem('themeColor')
+    })
   }
   handlenotification() {
     this.toggleSearch = 'true'
     this.newChat = 'false';
 
   }
-  // handleNewChatPoint() {
-  //   this.DS.currrentHandlePoint.subscribe((res) => {
-  //     this.newChat = sessionStorage.getItem('new-chat')
 
-  //   })
-  // }
   handleFilter() {
     this.DS.handletoggleChat(true);
     this.toggleSearch = true;
@@ -81,17 +81,16 @@ export class HomeComponent implements OnInit {
   }
   profileShow() {
     const checkProfile = sessionStorage.getItem('show-profile')
-    // if (checkProfile == 'closeProfile') {
-      sessionStorage.setItem('show-profile', 'profile');
-      this.showProfile = 'profile'
-    // } 
+    sessionStorage.setItem('show-profile', 'profile');
+    this.showProfile = 'profile'
+
 
     console.log(false)
   }
-  profileShowsm(){
-    if(this.toggleSearch == 'profile'){
+  profileShowsm() {
+    if (this.toggleSearch == 'profile') {
       this.toggleSearch = true;
-    }else{
+    } else {
       this.toggleSearch = 'profile'
     }
   }
@@ -130,12 +129,12 @@ export class HomeComponent implements OnInit {
   closeProfile() {
     const checkProfile = sessionStorage.getItem('show-profile');
 
-    if (checkProfile == 'profile' ) {
+    if (checkProfile == 'profile') {
       this.DS.currrentcloseProfile.subscribe((res) => {
-      sessionStorage.setItem('show-profile', 'closeProfile');
-      this.showProfile = res;
-    })
-    } ;
+        sessionStorage.setItem('show-profile', 'closeProfile');
+        this.showProfile = res;
+      })
+    };
   };
 
 

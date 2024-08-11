@@ -66,10 +66,10 @@
         </div>
         <div class="themeOption">
             <ul>
-                <li>
+                <li [ngClass]="themeBackGBorder == 'dark'? 'BGLight':'' " (click)="handleThemeColorDark()">
                     <div class="dark-theme"></div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dark
                 </li>
-                <li (click)="handleThemeColor()">
+                <li [ngClass]="themeBackGBorder == 'white'? 'BGLight':'' " (click)="handleThemeColorWhite()">
                     <div class="light-theme"></div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Light
                 </li>
             </ul>

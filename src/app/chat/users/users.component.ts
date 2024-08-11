@@ -10,6 +10,7 @@ import { PostdatasService } from '../../services/postdatas.service';
 import { GetdatasService } from '../../services/getdatas.service';
 import { ChatserviceService } from '../../services/chatservice.service';
 import { error } from 'node:console';
+import { ThemechangeService } from '../../services/themechange.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ import { error } from 'node:console';
 })
 export class UsersComponent implements OnInit, AfterViewChecked {
   constructor(private dataSharing: DataSharingService, private router: Router, private PostService: PostdatasService, private GetDatas: GetdatasService,
-    private chatService: ChatserviceService
+    private chatService: ChatserviceService, private themechange: ThemechangeService
   ) { };
   @ViewChild('chatContainer') private chatContainer!: ElementRef;
   getValues = "";
@@ -50,11 +51,11 @@ export class UsersComponent implements OnInit, AfterViewChecked {
     this.ToggleShowProfile();
     this.GetFavourate();
     this.getMess()
-
+    this.handleThemeColor()
 
   }
   ngAfterViewChecked(): void {
-      // this.scrollToBottom();
+    // this.scrollToBottom();
   }
   private scrollToBottom(): void {
     try {
@@ -62,7 +63,14 @@ export class UsersComponent implements OnInit, AfterViewChecked {
     } catch (err) {
       console.error('Could not scroll to bottom:', err);
     }
+  };
+
+  handleThemeColor() {
+    this.themechange.currentThemeChange.subscribe((res) => {
+      this.themeColor = sessionStorage.getItem('themeColor')
+    })
   }
+
   goBAck(params: string) {
     const back: boolean = false;
     this.router.navigate([params]);
@@ -131,8 +139,8 @@ export class UsersComponent implements OnInit, AfterViewChecked {
         (response: any) => {
           console.log('Message sent successfully:', response);
           this.message = '';
-          this.scrollToBottom();  
-                    // Clear the input field after sending the message
+          this.scrollToBottom();
+          // Clear the input field after sending the message
         },
         (error: any) => {
           console.error('Error sending message:', error);
@@ -142,19 +150,19 @@ export class UsersComponent implements OnInit, AfterViewChecked {
   }
   getMess() {
     // this.dataSharing.currentUsername.subscribe((res) => {
-      this.chatService.messages$.subscribe((mes) => {
-        this.messages = mes;
-        console.log(mes);
-      });
-      // this.chatService.newChat$.subscribe((chat)=>{
-      //   sessionStorage.setItem('newChat','true')
-      // });
-      const sender_id = sessionStorage.getItem('userId');
-      const receiver_id = sessionStorage.getItem('FavUserId')
-      this.chatService.getMessages(sender_id, receiver_id).subscribe();
+    this.chatService.messages$.subscribe((mes) => {
+      this.messages = mes;
+      console.log(mes);
+    });
+    // this.chatService.newChat$.subscribe((chat)=>{
+    //   sessionStorage.setItem('newChat','true')
+    // });
+    const sender_id = sessionStorage.getItem('userId');
+    const receiver_id = sessionStorage.getItem('FavUserId')
+    this.chatService.getMessages(sender_id, receiver_id).subscribe();
     // })
   };
-  
+
   removeFreindLIst() {
     const ID = sessionStorage.getItem('userId')
     const param: any = sessionStorage.getItem('FavUserId')
@@ -165,19 +173,19 @@ export class UsersComponent implements OnInit, AfterViewChecked {
         sessionStorage.setItem('username', 'false');
         // console.log(data.message);
         // this.friendLists();
-        this.delmessage(ID,param);
+        this.delmessage(ID, param);
         // window.location.reload();
       }
     )
   }
-  delmessage(sender_id:any,receiver_id:any) {
+  delmessage(sender_id: any, receiver_id: any) {
     this.chatService.delmessage(sender_id, receiver_id).subscribe(res => {
       console.log('Friend and chat history deleted successfully');
       window.location.reload();
       // Update your UI accordingly
     },
-    error => {
-      console.log(error);
+      error => {
+        console.log(error);
       }
     )
   }

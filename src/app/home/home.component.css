@@ -133,14 +133,12 @@
 
 .chat-users {
     width: 43%;
-    background-color: rgb(3, 3, 17);
+    height: 100%;
+    color: white;
 }
 .chat-users-light{
     width: 43%;
-    background-color: rgb(228, 227, 227);
-    background-color: rgb(243, 242, 242)
-
-
+    color: black'
 }
 
 @media(width<800px) {

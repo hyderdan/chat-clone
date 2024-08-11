@@ -1,6 +1,8 @@
 <div class="user-main">
-    <div *ngIf="checkGoBack == 'true' ">
-        <nav  [ngClass]="themeColor == 'white' ? 'user-nav-xl-light':'user-nav-xl' ">
+
+    <div class="user-main-sub" *ngIf="checkGoBack == 'true' ">
+
+        <nav [ngClass]="themeColor == 'white' ? 'user-nav-xl-light':'user-nav-xl' ">
             <button (click)="goBAck('/home')"><fa-icon [icon]="faarrowleft"></fa-icon></button>
             <h1>{{getValues}}</h1>
             <ul>
@@ -20,19 +22,24 @@
                 </li>
             </ul>
         </nav>
-        <div class="user-chat-show-l" #chatContainer>
-            <div *ngFor="let message of messages"
+
+        <div [ngClass]="themeColor == 'white'? 'user-chat-show-l-light': 'user-chat-show-l ' ">
+            
+                <div class="message" *ngFor="let message of messages"
                 [ngClass]="{'sender': message.sender_id === currentUser, 'receiver': message.sender_id !== currentUser}"
                 class="message">
                 <p><strong>{{message.sender}}</strong> {{message.message}}</p>
-            </div>
+
         </div>
-        <div  [ngClass]="themeColor == 'white' ? 'user-chat-type-light' : 'user-chat-type' " >
+        </div>
+        <div [ngClass]="themeColor == 'white' ? 'user-chat-type-light' : 'user-chat-type' ">
             <input type="text" [(ngModel)]="message">
             <button (click)="sendMessage()"><fa-icon [icon]="faPlane"></fa-icon></button>
         </div>
     </div>
-    <div *ngIf="checkGoBack === 'false' " style="text-align: center; height: 100%; place-content: center;">
+
+    <div *ngIf="checkGoBack === 'false' "
+        style="text-align:  center; background-color: rgb(5, 4, 53); height: 100%; place-content: center;">
         <h1>click any profile</h1>
     </div>
 
