@@ -3,9 +3,10 @@ import { GetdatasService } from '../services/getdatas.service';
 import { RouteGuardService } from '../services/route-guard.service';
 import { Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faXmark} from '@fortawesome/free-solid-svg-icons';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { CommonModule } from '@angular/common';
 import { DataSharingService } from '../services/data-sharing.service';
+import { ThemechangeService } from '../services/themechange.service';
 
 
 @Component({
@@ -18,10 +19,12 @@ import { DataSharingService } from '../services/data-sharing.service';
 export class ProfileComponent implements OnInit {
 
   userProfile: any
-   xmark = faXmark;
-   hadleProfileOptions:any = true;
-   themeColor = sessionStorage.getItem('themeColor');
-  constructor(private GetDatas: GetdatasService, private datasharing:DataSharingService,private checkLogout: RouteGuardService, private route: Router) { }
+  xmark = faXmark;
+  hadleProfileOptions: any = true;
+  themeColor = sessionStorage.getItem('themeColor');
+  themeBackGBorder = sessionStorage.getItem('themeColor');
+  constructor(private GetDatas: GetdatasService, private datasharing: DataSharingService, private checkLogout: RouteGuardService,
+    private route: Router, private themechange: ThemechangeService) { }
 
   ngOnInit(): void {
     this.getUserProfile();
@@ -48,18 +51,35 @@ export class ProfileComponent implements OnInit {
     this.route.navigate(['login']);
   };
 
-  handleClose(){
+  handleClose() {
     // sessionStorage.setItem('show-profile','closeProfile');
     this.datasharing.closeprofile('closeProfile');
   };
-  handleProfileoption(){
-    if(this.hadleProfileOptions == false){
+  handleProfileoption() {
+    if (this.hadleProfileOptions == false) {
       this.hadleProfileOptions = true
-    }else{
+    } else {
       this.hadleProfileOptions = false
     }
   };
-  handleThemeColor(){
-    sessionStorage.setItem('themeColor', 'white')
+  handleThemeColorWhite() {
+    sessionStorage.setItem('themeColor', 'white');
+    const checkTheme = sessionStorage.getItem('themeColor');
+    if (checkTheme == 'white') {
+      this.themeBackGBorder = 'white';
+      this.themeColor = 'white';
+      this.themechange.themechange(checkTheme);
+    }
+
+  }
+  handleThemeColorDark() {
+    sessionStorage.setItem('themeColor', 'dark');
+    const checkTheme = sessionStorage.getItem('themeColor');
+    if (checkTheme == 'dark') {
+      this.themeBackGBorder = 'dark';
+      this.themeColor = 'dark';
+      this.themechange.themechange(checkTheme);
+    }
+
   }
 }

@@ -6,6 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUserPlus, faLock } from '@fortawesome/free-solid-svg-icons';
 import { DataSharingService } from '../services/data-sharing.service';
 import { SockectservicesService } from '../services/sockectservices.service';
+import { ThemechangeService } from '../services/themechange.service';
 
 @Component({
   selector: 'app-search',
@@ -27,18 +28,26 @@ export class SearchComponent implements OnInit {
   CompareID: any = [];
 
   constructor(private postdatas: PostdatasService, private DS: DataSharingService, private postDatas: PostdatasService
-    , private SockectService: SockectservicesService
+    , private SockectService: SockectservicesService, private themechange: ThemechangeService
   ) { }
   ngOnInit(): void {
     this.SockectService.on('friendListUpdate', (data: any) => {
       // console.log('Friend list updated:', data);
       this.handleNewChatpoint(data);
       this.friendLists();
+      this.handleThemeColor()
 
     });
     this.friendLists();
 
   }
+
+  handleThemeColor() {
+    this.themechange.currentThemeChange.subscribe((res) => {
+      this.themeColor = sessionStorage.getItem('themeColor')
+    })
+  }
+
   handleNewChatpoint(data: any) {
     this.DS.handlePOint(data.newChat)
     sessionStorage.setItem('new-chat', data.newChat)
