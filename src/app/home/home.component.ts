@@ -80,13 +80,12 @@ export class HomeComponent implements OnInit {
     this.DS.HandleTogglefav('false')
   }
   profileShow() {
-    const checkProfile = sessionStorage.getItem('show-profile')
+    const checkProfile = sessionStorage.getItem('show-profile');
+    
     sessionStorage.setItem('show-profile', 'profile');
     this.showProfile = 'profile'
-
-
-    console.log(false)
-  }
+    
+   }
   profileShowsm() {
     if (this.toggleSearch == 'profile') {
       this.toggleSearch = true;
@@ -129,12 +128,11 @@ export class HomeComponent implements OnInit {
   closeProfile() {
     const checkProfile = sessionStorage.getItem('show-profile');
 
-    if (checkProfile == 'profile') {
+   
       this.DS.currrentcloseProfile.subscribe((res) => {
-        sessionStorage.setItem('show-profile', 'closeProfile');
         this.showProfile = res;
       })
-    };
+
   };
 
 

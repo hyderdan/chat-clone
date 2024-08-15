@@ -138,7 +138,7 @@
 }
 .chat-users-light{
     width: 43%;
-    color: black'
+    color: black;
 }
 
 @media(width<800px) {

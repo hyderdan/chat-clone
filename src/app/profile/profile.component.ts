@@ -52,7 +52,7 @@ export class ProfileComponent implements OnInit {
   };
 
   handleClose() {
-    // sessionStorage.setItem('show-profile','closeProfile');
+    sessionStorage.setItem('show-profile','closeProfile');
     this.datasharing.closeprofile('closeProfile');
   };
   handleProfileoption() {

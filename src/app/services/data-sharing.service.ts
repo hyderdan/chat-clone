@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs'
+import { BehaviorSubject, Subject } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +41,12 @@ export class DataSharingService {
   private closeProfile = new BehaviorSubject<any>('');
   currrentcloseProfile = this.closeProfile.asObservable();
 
+  private handleClickProfile = new BehaviorSubject<any>('');
+  curenthandleClickProfile = this.handleClickProfile.asObservable();
+
+  private profileClickSubject = new Subject<void>();
+  profileClick$ = this.profileClickSubject.asObservable();
+
 
 
   changeUsername(username: string) {
@@ -75,10 +81,16 @@ export class DataSharingService {
   currrentchatpoint(param: any) {
     this.chatPoint.next(param);
   };
-  closeprofile(param:any){
+  closeprofile(param: any) {
     this.closeProfile.next(param);
-    console.log(param,'hy')
+  }
 
+  handleclickprofile(param: any) {
+    this.handleClickProfile.next(param);
+  }
+
+  triggerProfileClick(){
+    this.profileClickSubject.next();
   }
 
 }
