@@ -99,11 +99,13 @@ export class ChatComponent implements OnInit {
   }
 
   friendLists() {
-    const userid = sessionStorage.getItem('userId')
+    const userid = sessionStorage.getItem('userId');
+    const  favId = sessionStorage.getItem('FavUserId')
     this.PostData.friendList(userid).subscribe(
       res => {
         // console.log(res.friendList)
-        this.datas = res.friendList
+        this.datas = res.friendList;
+        this.dataSharing.handleclickprofile(favId)
       }
     )
   }

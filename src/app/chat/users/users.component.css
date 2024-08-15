@@ -1,12 +1,15 @@
 .user-main {
     height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 .user-main-sub {
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    
+
 }
 
 .user-nav-xl {
@@ -78,7 +81,7 @@
 /* Customize scrollbar thumb */
 .user-chat-show-l::-webkit-scrollbar-thumb {
     background-color: rgb(3, 3, 20);
-    
+
     border-radius: 10px;
     /* Border radius */
 }
@@ -105,7 +108,7 @@
     align-self: flex-start;
 }
 
- .user-chat-show-l .message {
+.user-chat-show-l .message {
     position: relative;
 }
 
@@ -117,6 +120,7 @@
 
 .user-chat-type {
     /* background-color: red; */
+    color: white;
     height: 50px;
     display: flex;
 }
@@ -176,6 +180,7 @@
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    color: black;
 
 
 }
@@ -190,7 +195,7 @@
 
 
 
-.user-chat-show-l-light{
+.user-chat-show-l-light {
     height: 83%;
     background-color: rgb(243, 242, 242);
     display: flex;
@@ -198,6 +203,7 @@
     overflow-y: scroll;
 
 }
+
 .user-chat-show-l-light li {
     margin-bottom: 20px;
     margin-left: 30px;
@@ -228,4 +234,17 @@ ToggleFavourates2 {
 
 .ClickM:hover .menu-bar {
     display: block;
+}
+
+.goBack {
+    text-align: center;
+    background-color: rgb(5, 4, 53);
+    height: 100%;
+    place-content: center;
+}
+.goBack-light{
+    text-align: center;
+    background-color: rgb(243, 242, 242);
+    height: 100%;
+    place-content: center;
 }

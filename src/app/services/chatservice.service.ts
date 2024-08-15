@@ -17,12 +17,21 @@ export class ChatserviceService {
 
   private newChatSubject: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   newChat$: Observable<any> = this.newChatSubject.asObservable();
+
   private togglechat = new BehaviorSubject<any>('false');
   toggleChat$: Observable<any> = this.togglechat.asObservable();
+
+  public deletedConversationSubject = new BehaviorSubject<{ senderid: string, receiverid: string } | null>(null);
+  currentDelMessage$ = this.deletedConversationSubject.asObservable();
 
 
   constructor(private http: HttpClient) {
     this.socket = io(this.apiUrl);
+
+    this.socket.on('delete-message', (data: { senderid: string, receiverid: string }) => {
+      console.log('conservation Deleted');
+      this.deletedConversationSubject.next(data)
+    })
 
     this.socket.on('new-message', (message: Messages) => {
       console.log(message, 'newmessage')

@@ -11,6 +11,7 @@ import { GetdatasService } from '../../services/getdatas.service';
 import { ChatserviceService } from '../../services/chatservice.service';
 import { error } from 'node:console';
 import { ThemechangeService } from '../../services/themechange.service';
+import { SockectservicesService } from '../../services/sockectservices.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ import { ThemechangeService } from '../../services/themechange.service';
 })
 export class UsersComponent implements OnInit, AfterViewChecked {
   constructor(private dataSharing: DataSharingService, private router: Router, private PostService: PostdatasService, private GetDatas: GetdatasService,
-    private chatService: ChatserviceService, private themechange: ThemechangeService
+    private chatService: ChatserviceService, private themechange: ThemechangeService,
+    private SockectService: SockectservicesService,
   ) { };
   @ViewChild('chatContainer') private chatContainer!: ElementRef;
   getValues = "";
@@ -51,7 +53,14 @@ export class UsersComponent implements OnInit, AfterViewChecked {
     this.ToggleShowProfile();
     this.GetFavourate();
     this.getMess()
-    this.handleThemeColor()
+    this.handleThemeColor();
+    this.realtimeDelete();
+
+    this.SockectService.on('friendListUpdate', (data: any) => {
+      // console.log('Friend list updated:', data);
+     this.clickProfile();
+
+    });
 
   }
   ngAfterViewChecked(): void {
@@ -152,6 +161,7 @@ export class UsersComponent implements OnInit, AfterViewChecked {
     // this.dataSharing.currentUsername.subscribe((res) => {
     this.chatService.messages$.subscribe((mes) => {
       this.messages = mes;
+      this.scrollToBottom();
       console.log(mes);
     });
     // this.chatService.newChat$.subscribe((chat)=>{
@@ -171,24 +181,39 @@ export class UsersComponent implements OnInit, AfterViewChecked {
       (data: any) => {
         alert(data.mes);
         sessionStorage.setItem('username', 'false');
-        // console.log(data.message);
-        // this.friendLists();
         this.delmessage(ID, param);
-        // window.location.reload();
       }
     )
   }
   delmessage(sender_id: any, receiver_id: any) {
     this.chatService.delmessage(sender_id, receiver_id).subscribe(res => {
       console.log('Friend and chat history deleted successfully');
-      window.location.reload();
-      // Update your UI accordingly
+      // Update your UI accordingly;
+      this.chatService.deletedConversationSubject.next({ senderid: sender_id, receiverid: receiver_id });
     },
       error => {
         console.log(error);
       }
     )
-  }
+  };
 
+  clickProfile() {
+    this.checkGoBack = 'false'
+  }
+  realtimeDelete() {
+    this.chatService.currentDelMessage$.subscribe((data) => {
+      if (data) {
+        const { senderid, receiverid } = data;
+        const userId = sessionStorage.getItem('userId');
+        const favUserId = sessionStorage.getItem('FavUserId');
+
+        if ((senderid == userId && receiverid == favUserId) || (senderid == favUserId && receiverid == userId)) {
+          this.messages = []
+        }
+
+      }
+    })
+  };
+ 
 
 }
