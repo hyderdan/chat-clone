@@ -7,7 +7,44 @@
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
   } */
-
+  .toggleTheme{
+    /* position: absolute; */
+    background-color: rgb(12, 12, 62);
+    border: 0.2px solid rgb(124, 91, 243);
+    margin-top: -15px;
+    border-radius: 10px;
+    width: 50px;
+    height: 20px;
+    display: flex;
+    justify-content: left;
+    place-items: center;
+  }
+  .toggleTheme-light{
+    /* position: absolute; */
+    background-color: rgb(251, 251, 252);
+    border: 0.2px solid rgb(143, 143, 144);
+    margin-top: -15px;
+    border-radius: 10px;
+    width: 50px;
+    height: 20px;
+    display: flex;
+    justify-content: left;
+    place-items: center;
+  }
+  .themeChanger{
+    background-color: rgb(11, 10, 10);
+    height: 17px;
+    width: 20px;
+    border-radius: 100%;
+    margin-left: 2px;
+  }
+  .themeChanger-light {
+    background-color: rgb(224, 239, 16);
+    height: 17px;
+    width: 20px;
+    border-radius: 100%;
+    margin-left: 27px;
+  }
   .login-body {
     background-color: rgb(3, 3, 17);
     width: 100%;
@@ -25,7 +62,26 @@
     /* background: url("bg.jpg"); */
     background-position: center;
   }
+  
+  .login-body-light {
+    color: black;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(225, 225, 225);
 
+  }
+
+  .login-body-light::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    /* background: url("bg.jpg"); */
+    background-position: center;
+  }
   nav {
     position: fixed;
     padding: 25px 60px;
@@ -46,6 +102,7 @@
     width: 450px;
     transform: translate(-50%, -50%);
     background-color: rgb(3, 3, 20);
+
   }
 
   .form-wrapper h2 {
@@ -56,7 +113,27 @@
   .form-wrapper form {
     margin: 25px 0 65px;
   }
+  .form-wrapper-light {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 4px;
+    padding: 70px;
+    width: 450px;
+    transform: translate(-50%, -50%);
+    background-color:rgb(217, 216, 216);
+    border: 0.1px solid rgb(207, 207, 209);
 
+  }
+
+  .form-wrapper-light h2 {
+    color: black;
+    font-size: 2rem;
+  }
+
+  .form-wrapper-light form {
+    margin: 25px 0 65px;
+  }
   form .form-control {
     height: 50px;
     position: relative;
@@ -184,65 +261,4 @@
   }
 
   
-      /* -- External Social Link CSS Styles -- */
-
-      #source-link {
-          top: 120px;
-      }
-
-      #source-link>i {
-          color: rgb(94, 106, 210);
-      }
-
-      #yt-link {
-          top: 65px;
-      }
-
-      #yt-link>i {
-          color: rgb(219, 31, 106);
-
-      }
-
-      #Fund-link {
-          top: 10px;
-      }
-
-      #Fund-link>i {
-          color: rgb(255, 251, 0);
-
-      }
-
-      .meta-link {
-          align-items: center;
-          backdrop-filter: blur(3px);
-          background-color: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 6px;
-          box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-          cursor: pointer;
-          display: inline-flex;
-          gap: 5px;
-          left: 10px;
-          padding: 10px 20px;
-          position: fixed;
-          text-decoration: none;
-          transition: background-color 600ms, border-color 600ms;
-          z-index: 10000;
-      }
-
-      .meta-link:hover {
-          background-color: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .meta-link>i,
-      .meta-link>span {
-          height: 20px;
-          line-height: 20px;
-      }
-
-      .meta-link>span {
-          color: white;
-          font-family: "Rubik", sans-serif;
-          transition: color 600ms;
-      }
+    

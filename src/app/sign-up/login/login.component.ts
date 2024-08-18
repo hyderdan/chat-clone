@@ -6,6 +6,7 @@ import { RouteGuardService } from '../../services/route-guard.service';
 import { PostdatasService } from '../../services/postdatas.service';
 import { GetdatasService } from '../../services/getdatas.service';
 import { DataSharingService } from '../../services/data-sharing.service';
+import { ThemechangeService } from '../../services/themechange.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,9 @@ export class LoginComponent {
   public defaultPhoneNo: number = 9207403126;
   public defaultPassword = "hyder";
   userProfile = [];
-  constructor(private route: Router, private FB: FormBuilder, private RG: RouteGuardService, private LoginService: PostdatasService, private GetDatas: GetdatasService, private DS: DataSharingService) { }
+  themeColor: any = sessionStorage.getItem('themeColor');
+  constructor(private route: Router, private FB: FormBuilder, private RG: RouteGuardService, private LoginService: PostdatasService,
+    private GetDatas: GetdatasService, private DS: DataSharingService, private themecolor: ThemechangeService) { }
 
 
   phoneNumberValidation(params: AbstractControl) {
@@ -69,5 +72,22 @@ export class LoginComponent {
     this.route.navigate([params])
   }
 
- 
+  themeChanger() {
+    const themeColor = sessionStorage.getItem('themeColor');
+    if (themeColor == 'white' ) {
+      sessionStorage.setItem('themeColor', 'dark');
+      this.themeColor = 'dark'
+      console.log('white')
+      this.themecolor.themechange('dark');
+
+
+    } else {
+      sessionStorage.setItem('themeColor', 'white');
+      this.themeColor = 'white'
+      this.themecolor.themechange('white');
+
+    }
+
+  }
+
 }
