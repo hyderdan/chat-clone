@@ -41,6 +41,7 @@ export class UsersComponent implements OnInit, AfterViewChecked {
   faarrowleft = faArrowLeft;
   chatSend = '';
   favourates = faStar;
+  optionToggle:any = true; 
   messages: any = [];
   currentUser = sessionStorage.getItem('userId');
   receiverId = sessionStorage.getItem('FavUserId');
@@ -215,5 +216,15 @@ export class UsersComponent implements OnInit, AfterViewChecked {
     })
   };
  
+  toggleOption(){
+    if(this.optionToggle == true){
+      this.optionToggle = false;
+    }
+    else{
+      this.optionToggle = true;
+
+    }
+  }
+
 
 }

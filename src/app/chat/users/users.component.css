@@ -1,5 +1,5 @@
 .user-main {
-    height: 100%;
+    height: 100vh;
     width: 100%;
     overflow: hidden;
 }
@@ -9,11 +9,11 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-
+    
 }
 
 .user-nav-xl {
-    height: 10%;
+    height: auto;
     border-bottom: 0.2px solid rgb(3, 3, 61);
     display: flex;
     flex-direction: row;
@@ -43,7 +43,7 @@
 }
 
 .user-nav-xl-light {
-    height: 10%;
+    height: auto;
     border-bottom: 0.2px solid rgb(221, 221, 224);
     display: flex;
     flex-direction: row;
@@ -149,7 +149,7 @@
 
 
 .user-chat-type-light {
-    /* background-color: red; */
+    border-top: 0.2px solid rgb(191, 189, 189);
     height: 50px;
     display: flex;
 }
@@ -176,7 +176,7 @@
 
 .user-chat-show-l {
     background-color: rgb(2, 2, 23);
-    height: 83%;
+    height: 100%; 
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -197,7 +197,7 @@
 
 .user-chat-show-l-light {
     height: 83%;
-    background-color: rgb(243, 242, 242);
+    background-color: rgb(237, 236, 236);
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
@@ -218,23 +218,57 @@ ToggleFavourates2 {
     color: blue;
 }
 
-.menu-bar {
-    display: none;
-}
 
 .menu-bar ul {
+    z-index: 8;
     position: absolute;
-    background-color: rgb(14, 9, 26);
+    background-color: rgb(3, 3, 37);
     display: flex;
     flex-direction: column;
-    margin-left: -16px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    margin-left: -26px;
+    margin-top: 5px;
+    height: 100px;
+    width: 100px;
+    border: 0.5px solid rgb(9, 9, 78);
+} 
+.menu-bar li{
+    /* background-color: red; */
+    /* margin-top: 10px; */
+   padding-left: 15px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   transition: 0.3s ease-in-out;
+
+}
+.menu-bar li:hover{
+background-color: #9d9d9e;
+}
+.menu-bar-light ul{
+    z-index: 8;
+    position: absolute;
+    background-color: rgb(243, 242, 242);
+    display: flex;
+    flex-direction: column;
+    margin-left: -26px;
+    margin-top: 5px;
+    height: 100px;
+    width: 100px;
+    border: 0.2px solid rgb(216, 214, 214);
+}
+.menu-bar-light li{
+    /* background-color: red; */
+    /* margin-top: 10px; */
+   padding-left: 15px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   transition: 0.3s ease-in-out;
+
+}
+.menu-bar-light li:hover{
+background-color: #ad9df4;
 }
 
-.ClickM:hover .menu-bar {
-    display: block;
-}
+
 
 .goBack {
     text-align: center;
@@ -247,4 +281,27 @@ ToggleFavourates2 {
     background-color: rgb(243, 242, 242);
     height: 100%;
     place-content: center;
+}
+.optionToggle{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 200px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    color: white;
+    margin-top: 100px;
+    margin-left: 150px;
+}
+.optionToggle{
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    color: black;
+    margin-top: 100px;
+    margin-left: 150px;
 }

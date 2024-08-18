@@ -50,7 +50,10 @@
     height: 100%;
     width: 40%;
     border-right: 0.2px solid rgb(3, 3, 61);
+    font-size: clamp(10px,3vw,17px);
+
 }
+
 
 
 .profile-sub1-sm ul {

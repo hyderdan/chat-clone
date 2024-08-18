@@ -1,5 +1,9 @@
-<div class="login-body">
-    <div class="form-wrapper">
+<div [ngClass]="themeColor == 'white' ? 'login-body-light': 'login-body' ">
+    <div [ngClass]="themeColor == 'white' ? 'form-wrapper-light': 'form-wrapper' ">
+        <div [ngClass]=" themeColor == 'white'?'toggleTheme-light':'toggleTheme' ">
+            <div (click)="themeChanger()" class="themeChanger"
+                [ngClass]="themeColor == 'white'? 'themeChanger-light': 'themeChanger' "></div>
+        </div>
         <h2>Login In</h2>
         <form [formGroup]="createLoginForm">
             <div class="form-control">

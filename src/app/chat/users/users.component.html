@@ -1,27 +1,32 @@
 <div class="user-main">
 
+
     <div class="user-main-sub" *ngIf="checkGoBack == 'true' ">
 
         <nav [ngClass]="themeColor == 'white' ? 'user-nav-xl-light':'user-nav-xl' ">
             <button (click)="goBAck('/home')"><fa-icon [icon]="faarrowleft"></fa-icon></button>
             <h1>{{getValues}}</h1>
             <ul>
-                <li *ngIf="HandleToggleStar.includes(GetUserId)" (click)="HandleFavourate(GetUserId)">
-                    <fa-icon class="ToggleFavourates" [icon]="favourates"></fa-icon>
-                </li>
-                <li *ngIf="!HandleToggleStar.includes(GetUserId)" (click)="HandleFavourate(GetUserId)">
-                    <fa-icon class="ToggleFavourates2" [icon]="favourates"></fa-icon>
-                </li>
-                <li class="ClickM">MENU
-                    <div class="menu-bar">
+
+                <li (click)="toggleOption()" class="ClickM">MENU
+                    <div *ngIf="optionToggle == false" [ngClass]="themeColor == 'white'? 'menu-bar-light': 'menu-bar' ">
                         <ul>
                             <li (click)="delmessage(currentUser,receiverId)">clearChat</li>
                             <li (click)="removeFreindLIst()">remove </li>
                         </ul>
                     </div>
                 </li>
+
+                <li *ngIf="HandleToggleStar.includes(GetUserId)" (click)="HandleFavourate(GetUserId)">
+                    <fa-icon class="ToggleFavourates" [icon]="favourates"></fa-icon>
+                </li>
+                <li *ngIf="!HandleToggleStar.includes(GetUserId)" (click)="HandleFavourate(GetUserId)">
+                    <fa-icon class="ToggleFavourates2" [icon]="favourates"></fa-icon>
+                </li>
+
             </ul>
         </nav>
+
 
         <div #chatContainer [ngClass]="themeColor == 'white'? 'user-chat-show-l-light': 'user-chat-show-l ' ">
 
@@ -41,6 +46,8 @@
     <div *ngIf="checkGoBack === 'false' " [ngClass]="themeColor == 'white' ? 'goBack-light': 'goBack'">
         <h1>click any profile</h1>
     </div>
+
+
 
 
 </div>
