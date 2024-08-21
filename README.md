@@ -35,7 +35,7 @@ JWT (jsonwebtoken): For authentication and authorization using JSON Web Tokens.
 Bcryptjs: For hashing and comparing passwords.
 Dotenv: For loading environment variables from a .env file.
 
-##Frontend (Angular)
+## Frontend (Angular)
 Angular: Core framework for building the client-side application.
 Socket.io-client: To connect the Angular app to the Socket.io server for real-time communication.
 RxJS: For reactive programming and handling asynchronous events.
