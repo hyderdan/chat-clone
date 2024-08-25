@@ -5,7 +5,10 @@
 The main objective of this project is to implement a beautiful registration form with form validation and also need to create and update data in server.
 
 ## Demo(chat-clone/blob/main/src/assets/demo/chat-clone-_21_8_2024%2C_2_10_55_pm%20(720p)%20(1).mp4)
-
+<video width="640" height="480" controls>
+  <source src="URL_OF_YOUR_MP4_FILE" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 ## Features
 
 - [x] Real-Time Messaging
