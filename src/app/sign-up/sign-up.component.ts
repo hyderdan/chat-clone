@@ -54,7 +54,7 @@ export class SignUpComponent {
 
           alert(res.message)
           this.createFormGroup.reset();
-          if(res.message == 'Account created successfully'){
+          if (res.message == 'Account created successfully') {
             this.route.navigate(['login']);
           }
         }
