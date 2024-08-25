@@ -4,7 +4,7 @@
 
 The main objective of this project is to implement a beautiful registration form with form validation and also need to create and update data in server.
 
-## Demo(https://github.com/hyderdan/chat-clone/blob/main/src/assets/demo/chat-clone-_21_8_2024%2C_2_10_55_pm%20(720p)%20(1).mp4)
+## Demo(chat-clone/blob/main/src/assets/demo/chat-clone-_21_8_2024%2C_2_10_55_pm%20(720p)%20(1).mp4)
 
 ## Features
 
