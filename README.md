@@ -4,7 +4,7 @@
 
 The main objective of this project is to implement a beautiful registration form with form validation and also need to create and update data in server.
 
-## [Demo](src/assets/demo/Untitled video - Made with Clipchamp.gif)
+## [Demo](/src/assets/demo/Untitled video - Made with Clipchamp.gif)
 
 ## Features
 
