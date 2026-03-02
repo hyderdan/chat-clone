@@ -2,7 +2,8 @@
 
 ## Introduction
 
-The main objective of this project is to implement a beautiful registration form with form validation and also need to create and update data in server.
+Real-time chat platform enabling smooth user interactions. 
+• Developed with Angular, Tailwind CSS, Node.js, Sockect.io and MongoDB.
 
 ## Demo
 ![Click here to watch Demo](/src/assets/demo/Untitled%20video%20-%20Made%20with%20Clipchamp.gif)
